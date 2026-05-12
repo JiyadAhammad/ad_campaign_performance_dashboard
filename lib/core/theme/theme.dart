@@ -56,6 +56,13 @@ class AppTheme {
       surface: AppColors.darkCard,
       error: AppColors.error,
     ),
+    appBarTheme: const AppBarTheme(
+      centerTitle: false,
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      backgroundColor: AppColors.appBarBg,
+      surfaceTintColor: AppColors.appBarBg,
+    ),
     extensions: <ThemeExtension<AppCustomColors>>[
       AppCustomColors(
         success: AppColors.success,

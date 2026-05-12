@@ -4,10 +4,13 @@ class AppColors {
   // --- Palette ---
   static const Color primary = Color(0xFF1CB4BF);
   static const MaterialColor blue = Colors.blue;
-  static const Color darkBg = Color(0xFF0F1115);
+  static const Color darkBg = Color(0xFF111113);
   static const Color darkCard = Color(0xFF1B1A1E);
   static const Color lightBg = Color(0xFFF5F7FA);
   static const Color lightCard = Colors.white;
+  static const Color progressBg = Color(0xFF3F3F46);
+  static const Color labelText = Color(0xFF9A9AA2);
+  static const Color appBarBg = Color(0xFF1B1A1E);
 
   // Status Colors (Shared)
   static const Color success = Colors.green;

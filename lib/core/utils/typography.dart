@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/colors.dart';
+
 class AppTypography {
   AppTypography._();
 
@@ -50,6 +52,7 @@ class AppTypography {
   static const TextStyle captionRegular = TextStyle(
     fontSize: 10,
     fontWeight: FontWeight.w400,
+    color: AppColors.labelText,
     height: 1.3,
   );
 }
