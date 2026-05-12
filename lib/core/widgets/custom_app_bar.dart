@@ -6,7 +6,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.title,
-    this.centerTitle = true,
+    this.centerTitle = false,
     this.leading,
     this.actions,
     this.showBackButton = false,
@@ -22,7 +22,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: centerTitle,
-      elevation: 0,
       leading: showBackButton
           ? IconButton(
               icon: const Icon(Icons.arrow_back),
