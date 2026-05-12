@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/environment/env.dart';
 import 'core/theme/theme.dart';
+import 'features/campaigns/presentation/pages/campaigns.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -24,13 +25,14 @@ class _MyApp extends StatelessWidget {
     return ValueListenableBuilder<ThemeMode>(
       valueListenable: themeNotifier,
       builder: (_, ThemeMode mode, _) {
-        return MaterialApp.router(
+        return MaterialApp(
           title: Environment.current == AppEnvironment.dev
               ? 'Ad Campaign dev'
               : 'Ad Campaign',
           themeMode: mode,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
+          home: CampaignsScreen(),
         );
       },
     );
