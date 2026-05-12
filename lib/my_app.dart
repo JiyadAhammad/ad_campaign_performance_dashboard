@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'core/environment/env.dart';
 import 'core/theme/theme.dart';
 import 'features/campaigns/presentation/pages/campaigns.dart';
+import 'features/spend_summary/presentation/pages/spend_summary.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -32,7 +33,7 @@ class _MyApp extends StatelessWidget {
           themeMode: mode,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
-          home: CampaignsScreen(),
+          home: const SpendSummaryScreen(),
         );
       },
     );

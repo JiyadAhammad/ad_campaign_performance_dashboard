@@ -4,8 +4,10 @@ import '../utils/typography.dart';
 
 enum TextVariant {
   headingLarge,
+  headingMedium,
   bodyMedium,
   labelMedium,
+  labelSmall,
   captionRegular,
   captionMedium,
 }
@@ -39,6 +41,9 @@ class AppText extends StatelessWidget {
       case TextVariant.headingLarge:
         style = AppTypography.headingLarge;
         break;
+      case TextVariant.headingMedium:
+        style = AppTypography.headingMedium;
+        break;
 
       case TextVariant.bodyMedium:
         style = AppTypography.bodyMedium;
@@ -46,6 +51,9 @@ class AppText extends StatelessWidget {
 
       case TextVariant.labelMedium:
         style = AppTypography.labelMedium;
+        break;
+      case TextVariant.labelSmall:
+        style = AppTypography.labelSmall;
         break;
 
       case TextVariant.captionRegular:

@@ -16,6 +16,7 @@ class AppColors {
   static const Color success = Colors.green;
   static const Color warning = Colors.orange;
   static const Color error = Colors.red;
+  static const Color purple = Color(0xFF8B1CBF);
   static const Color muted = Colors.grey;
 
   // Light Bg for snackbar
