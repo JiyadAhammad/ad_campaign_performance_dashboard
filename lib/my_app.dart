@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/environment/env.dart';
 import 'core/theme/theme.dart';
-import 'features/anomaly_alerts/presentation/pages/anomaly_alerts.dart';
+import 'features/root_navigation/root_navigation.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -32,7 +32,7 @@ class _MyApp extends StatelessWidget {
           themeMode: mode,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
-          home: const AnomalyAlertsScreen(),
+          home: RootNavigation(),
         );
       },
     );

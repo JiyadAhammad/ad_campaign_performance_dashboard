@@ -60,7 +60,7 @@ class CampaignsScreen extends StatelessWidget {
       drawer: const Drawer(),
       appBar: const CustomAppBar(title: 'Campaign List '),
       body: Padding(
-        padding: const EdgeInsets.all(18.0),
+        padding: const EdgeInsets.all(18.0).copyWith(bottom: 0),
         child: Column(
           spacing: 12,
           children: <Widget>[

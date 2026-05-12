@@ -11,6 +11,7 @@ class AppColors {
   static const Color progressBg = Color(0xFF3F3F46);
   static const Color labelText = Color(0xFF9A9AA2);
   static const Color appBarBg = Color(0xFF1B1A1E);
+  static const Color bottomNav = Color(0xFF1E1E1E);
 
   // Status Colors (Shared)
   static const Color success = Colors.green;
