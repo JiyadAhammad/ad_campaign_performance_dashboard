@@ -2,7 +2,7 @@ import '../environment/env.dart';
 
 class AppConfig {
   static const String devBaseUrl =
-      'https://e5eb0d84-2b7e-4c32-98b9-233668b4e189.mock.pstmn.io/v1';
+      'https://e5eb0d84-2b7e-4c32-98b9-233668b4e189.mock.pstmn.io';
   // TODO(Jiyad): Update Production url here
   static const String prodBaseUrl = 'Update Production url here';
 
