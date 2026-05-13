@@ -2,6 +2,7 @@
 /// MAIN ROOT NAVIGATION
 /// CONNECTS:
 /// 1. Campaign List
+///   1.1 Campaign detail
 /// 2. Spend Summary
 /// 3. Alerts
 /// 4. Profile

@@ -6,6 +6,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.title,
+    this.titleWidget,
     this.centerTitle = false,
     this.leading,
     this.actions,
@@ -15,6 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool centerTitle;
   final Widget? leading;
+  final Widget? titleWidget;
   final List<Widget>? actions;
   final bool showBackButton;
 
@@ -28,7 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: () => Navigator.pop(context),
             )
           : leading,
-      title: AppText(title, variant: TextVariant.headingLarge),
+      title: titleWidget ?? AppText(title, variant: TextVariant.headingLarge),
       actions: actions,
     );
   }
