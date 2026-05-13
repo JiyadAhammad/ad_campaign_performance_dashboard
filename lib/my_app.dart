@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'core/environment/env.dart';
 import 'core/theme/theme.dart';
-import 'features/campaign_details/presentation/pages/campaign_details.dart';
 import 'features/root_navigation/root_navigation.dart';
 
 class MainApp extends StatelessWidget {
@@ -33,7 +32,7 @@ class _MyApp extends StatelessWidget {
           themeMode: mode,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
-          home: CampaignDetailScreen(),
+          home: RootNavigation(),
         );
       },
     );
