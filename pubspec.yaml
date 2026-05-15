@@ -20,6 +20,7 @@ dependencies:
   fpdart: ^1.2.0
   intl: ^0.20.2
   shimmer: ^3.0.0
+  equatable: ^2.0.8
 
 dev_dependencies:
   flutter_test:
