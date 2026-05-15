@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/extensions/date_extension.dart';
+import '../../../../core/extensions/number_extension.dart';
 import '../../../../core/theme/colors.dart';
+import '../../../../core/widgets/custom_cached_network_image.dart';
 import '../../../../core/widgets/custom_text.dart';
-import '../../data/model/sample_model.dart';
+import '../../domain/entity/campaign_entity.dart';
 
 ///
 /// CARD
 ///
 class CampaignCard extends StatelessWidget {
   const CampaignCard({super.key, required this.campaign});
-  final CampaignModel campaign;
+  final CampaignEntity campaign;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,8 @@ class CampaignCard extends StatelessWidget {
                   color: AppColors.primary.withAlpha(20),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Icon(campaign.icon, color: AppColors.primary),
+                child: CustomCachedNetworkImage(imageUrl: campaign.thumbnail),
+                // child: Icon(campaign., color: AppColors.primary),
               ),
 
               const SizedBox(width: 12),
@@ -53,7 +57,7 @@ class CampaignCard extends StatelessWidget {
                   crossAxisAlignment: .start,
                   spacing: 2,
                   children: <Widget>[
-                    AppText(campaign.title, variant: TextVariant.labelMedium),
+                    AppText(campaign.name, variant: TextVariant.labelMedium),
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
@@ -64,7 +68,7 @@ class CampaignCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(2),
                       ),
                       child: AppText(
-                        campaign.category,
+                        campaign.objective,
                         variant: TextVariant.captionRegular,
                         color: AppColors.primary,
                       ),
@@ -130,9 +134,12 @@ class CampaignCard extends StatelessWidget {
 
           Row(
             children: <Widget>[
-              AppText(campaign.spend, variant: TextVariant.labelMedium),
               AppText(
-                ' / ${campaign.totalSpend}',
+                '${campaign.spend} ${campaign.currency}',
+                variant: TextVariant.labelMedium,
+              ),
+              AppText(
+                ' / ${campaign.budget} ${campaign.currency}',
                 variant: TextVariant.labelMedium,
                 color: Colors.white60,
               ),
@@ -150,7 +157,7 @@ class CampaignCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: LinearProgressIndicator(
-                    value: campaign.progress,
+                    value: campaign.progressValue,
                     minHeight: 6,
                     backgroundColor: AppColors.progressBg,
                     borderRadius: BorderRadius.circular(16),
@@ -162,7 +169,7 @@ class CampaignCard extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               AppText(
-                '${(campaign.progress * 100).toInt()}%',
+                '${campaign.budgetUtilization.toInt()}%',
                 variant: TextVariant.captionMedium,
               ),
             ],
@@ -179,7 +186,7 @@ class CampaignCard extends StatelessWidget {
               Expanded(
                 child: _StatCard(
                   icon: Icons.remove_red_eye_outlined,
-                  value: campaign.impressions,
+                  value: campaign.impressions.toBudgetFormat(),
                   label: 'Impressions',
                 ),
               ),
@@ -187,7 +194,7 @@ class CampaignCard extends StatelessWidget {
               Expanded(
                 child: _StatCard(
                   icon: Icons.ads_click_outlined,
-                  value: campaign.clicks,
+                  value: campaign.clicks.toBudgetFormat(),
                   label: 'Clicks',
                 ),
               ),
@@ -195,7 +202,7 @@ class CampaignCard extends StatelessWidget {
               Expanded(
                 child: _StatCard(
                   icon: Icons.trending_up,
-                  value: campaign.ctr,
+                  value: '${campaign.ctr}',
                   label: 'CTR',
                 ),
               ),
@@ -213,14 +220,14 @@ class CampaignCard extends StatelessWidget {
                 child: _BottomInfo(
                   icon: Icons.calendar_today_outlined,
                   title: 'Start date',
-                  value: campaign.startDate,
+                  value: campaign.startDate.toDate_dd_MMM_yyyy(),
                 ),
               ),
               Expanded(
                 child: _BottomInfo(
                   icon: Icons.public,
                   title: 'Audience',
-                  value: campaign.audience,
+                  value: campaign.channel,
                 ),
               ),
             ],

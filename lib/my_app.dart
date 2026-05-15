@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nested/nested.dart';
 
+import 'core/di/injection.dart';
 import 'core/environment/env.dart';
 import 'core/theme/theme.dart';
+import 'features/campaigns/presentation/bloc/campaign_bloc.dart';
 import 'features/root_navigation/root_navigation.dart';
 
 class MainApp extends StatelessWidget {
@@ -9,7 +13,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const _MyApp();
+    return MultiBlocProvider(
+      providers: <SingleChildWidget>[
+        BlocProvider<CampaignBloc>(
+          create: (_) =>
+              sl<CampaignBloc>()..add(const CampaignEvent.getCampaigns()),
+        ),
+      ],
+      child: const _MyApp(),
+    );
   }
 }
 
