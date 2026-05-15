@@ -7,6 +7,7 @@ import 'core/environment/env.dart';
 import 'core/theme/theme.dart';
 import 'features/campaigns/presentation/bloc/campaign_bloc.dart';
 import 'features/root_navigation/root_navigation.dart';
+import 'features/spend_summary/presentation/bloc/spend_summary_bloc.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -18,6 +19,11 @@ class MainApp extends StatelessWidget {
         BlocProvider<CampaignBloc>(
           create: (_) =>
               sl<CampaignBloc>()..add(const CampaignEvent.getCampaigns()),
+        ),
+        BlocProvider<SpendSummaryBloc>(
+          create: (_) =>
+              sl<SpendSummaryBloc>()
+                ..add(const SpendSummaryEvent.getSpendSummary()),
         ),
       ],
       child: const _MyApp(),

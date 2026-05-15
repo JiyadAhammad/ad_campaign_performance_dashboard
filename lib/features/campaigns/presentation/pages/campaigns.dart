@@ -66,7 +66,7 @@ class CampaignsScreen extends StatelessWidget {
             Expanded(
               child: BlocBuilder<CampaignBloc, CampaignState>(
                 builder: (BuildContext context, CampaignState state) {
-                  if (!state.isLoading) {
+                  if (state.isLoading) {
                     return ListView.builder(
                       itemCount: 6,
                       itemBuilder: (_, __) {

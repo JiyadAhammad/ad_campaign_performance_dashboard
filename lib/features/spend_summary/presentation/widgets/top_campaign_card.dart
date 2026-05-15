@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../../core/widgets/custom_card.dart';
 import '../../../../core/widgets/custom_text.dart';
-import '../../data/model/sample_model.dart';
+import '../../domain/entity/spend_summary_entity.dart';
 
 class TopCampaignsCard extends StatelessWidget {
   const TopCampaignsCard({super.key, required this.campaigns});
-  final List<TopCampaignModel> campaigns;
+  final List<TopCampaignEntity> campaigns;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,9 @@ class TopCampaignsCard extends StatelessWidget {
               child: Divider(color: Colors.white24),
             ),
             itemBuilder: (BuildContext context, int index) {
-              final TopCampaignModel campaign = campaigns[index];
+              final TopCampaignEntity campaign = campaigns[index];
 
-              return TopCampaignTile(campaign: campaign);
+              return _TopCampaignTile(campaign: campaign, rank: index);
             },
           ),
         ],
@@ -40,12 +40,18 @@ class TopCampaignsCard extends StatelessWidget {
   }
 }
 
-class TopCampaignTile extends StatelessWidget {
-  const TopCampaignTile({super.key, required this.campaign});
-  final TopCampaignModel campaign;
+class _TopCampaignTile extends StatelessWidget {
+  const _TopCampaignTile({required this.campaign, required this.rank});
+  final TopCampaignEntity campaign;
+  final int rank;
 
   @override
   Widget build(BuildContext context) {
+    const List<IconData> icons = <IconData>[
+      Icons.campaign_outlined,
+      Icons.card_giftcard,
+      Icons.shopping_cart_outlined,
+    ];
     return Row(
       children: <Widget>[
         ///
@@ -60,7 +66,7 @@ class TopCampaignTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(2),
           ),
           child: AppText(
-            '${campaign.rank}',
+            '${rank + 1}',
             variant: TextVariant.labelMedium,
             color: AppColors.primary,
           ),
@@ -78,7 +84,7 @@ class TopCampaignTile extends StatelessWidget {
             color: AppColors.primary.withAlpha(20),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(campaign.icon, color: AppColors.primary),
+          child: Icon(icons[rank], color: AppColors.primary),
         ),
 
         const SizedBox(width: 8),
@@ -87,7 +93,7 @@ class TopCampaignTile extends StatelessWidget {
         /// TITLE
         ///
         Expanded(
-          child: AppText(campaign.title, variant: TextVariant.labelSmall),
+          child: AppText(campaign.name, variant: TextVariant.labelSmall),
         ),
 
         ///
@@ -96,7 +102,7 @@ class TopCampaignTile extends StatelessWidget {
         Row(
           children: <Widget>[
             AppText(
-              campaign.ctr,
+              '${campaign.ctr}',
               variant: TextVariant.labelMedium,
               color: AppColors.success,
             ),

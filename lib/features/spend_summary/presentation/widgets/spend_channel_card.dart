@@ -1,15 +1,27 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/custom_card.dart';
 import '../../../../core/widgets/custom_text.dart';
-import '../../data/model/sample_model.dart';
+import '../../domain/entity/spend_summary_entity.dart';
 
 class SpendByChannelCard extends StatelessWidget {
-  const SpendByChannelCard({super.key, required this.channels});
-  final List<ChannelModel> channels;
+  const SpendByChannelCard({
+    super.key,
+    required this.channels,
+    required this.totalSpend,
+  });
+  final List<ChannelAnalyticsEntity> channels;
+  final int totalSpend;
 
   @override
   Widget build(BuildContext context) {
+    final List<MaterialColor> colors = List.generate(channels.length, (
+      int index,
+    ) {
+      return Colors.primaries[Random().nextInt(10)];
+    });
     return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +38,13 @@ class SpendByChannelCard extends StatelessWidget {
               SizedBox(
                 height: 125,
                 width: 125,
-                child: CustomPaint(painter: _DonutChartPainter(channels)),
+                child: CustomPaint(
+                  painter: _DonutChartPainter(
+                    channels,
+                    totalSpend: totalSpend,
+                    colors: colors,
+                  ),
+                ),
               ),
 
               const SizedBox(width: 22),
@@ -42,22 +60,25 @@ class SpendByChannelCard extends StatelessWidget {
                   separatorBuilder: (_, __) =>
                       const Divider(color: Colors.white24),
                   itemBuilder: (BuildContext context, int index) {
-                    final ChannelModel item = channels[index];
+                    final ChannelAnalyticsEntity item = channels[index];
 
                     return Row(
                       children: <Widget>[
-                        CircleAvatar(radius: 10, backgroundColor: item.color),
+                        CircleAvatar(
+                          radius: 10,
+                          backgroundColor: colors[index],
+                        ),
 
                         const SizedBox(width: 12),
 
                         Expanded(
                           child: AppText(
-                            item.title,
+                            item.channel,
                             variant: TextVariant.labelMedium,
                           ),
                         ),
 
-                        AppText('${item.percentage}%'),
+                        AppText('${item.spendPercentage(totalSpend)}%'),
                       ],
                     );
                   },
@@ -72,8 +93,14 @@ class SpendByChannelCard extends StatelessWidget {
 }
 
 class _DonutChartPainter extends CustomPainter {
-  _DonutChartPainter(this.channels);
-  final List<ChannelModel> channels;
+  _DonutChartPainter(
+    this.channels, {
+    required this.totalSpend,
+    required this.colors,
+  });
+  final List<ChannelAnalyticsEntity> channels;
+  final int totalSpend;
+  final List<Color> colors;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -83,11 +110,14 @@ class _DonutChartPainter extends CustomPainter {
 
     double startAngle = -90;
 
-    for (final ChannelModel item in channels) {
-      final double sweepAngle = 360 * (item.percentage / 100);
+    // for (final ChannelAnalyticsEntity item in channels) {
+    for (int i = 0; i < channels.length; i++) {
+      final ChannelAnalyticsEntity item = channels[i];
+      final Color color = colors[i];
+      final double sweepAngle = 360 * (item.spendPercentage(totalSpend) / 100);
 
       final Paint paint = Paint()
-        ..color = item.color
+        ..color = color
         ..style = PaintingStyle.stroke
         ..strokeCap = StrokeCap.butt
         ..strokeWidth = strokeWidth;

@@ -18,6 +18,6 @@ class ApiEndPoints {
   */
   static const String _v1 = '/v1';
   static String get campaigns => '$_v1/campaigns ';
-  static String get campaignSummary => '$_v1/$campaigns/summary ';
+  static String get campaignSummary => '$campaigns/summary ';
   static String get campaignMetrics => '$_v1/$campaigns/metrics/live';
 }
