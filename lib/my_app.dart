@@ -5,6 +5,7 @@ import 'package:nested/nested.dart';
 import 'core/di/injection.dart';
 import 'core/environment/env.dart';
 import 'core/theme/theme.dart';
+import 'features/anomaly_alerts/presentation/bloc/live_metric_alert_bloc.dart';
 import 'features/campaigns/presentation/bloc/campaign_bloc.dart';
 import 'features/root_navigation/root_navigation.dart';
 import 'features/spend_summary/presentation/bloc/spend_summary_bloc.dart';
@@ -24,6 +25,16 @@ class MainApp extends StatelessWidget {
           create: (_) =>
               sl<SpendSummaryBloc>()
                 ..add(const SpendSummaryEvent.getSpendSummary()),
+        ),
+        BlocProvider<SpendSummaryBloc>(
+          create: (_) =>
+              sl<SpendSummaryBloc>()
+                ..add(const SpendSummaryEvent.getSpendSummary()),
+        ),
+        BlocProvider<LiveMetricAlertBloc>(
+          create: (_) =>
+              sl<LiveMetricAlertBloc>()
+                ..add(const LiveMetricAlertEvent.getLiveMetricAlert()),
         ),
       ],
       child: const _MyApp(),
