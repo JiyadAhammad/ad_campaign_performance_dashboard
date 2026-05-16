@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_text.dart';
-import '../../data/model/live_campaign_alert.dart';
 import '../../domain/entity/live_campaign_alert_entity.dart';
 import '../bloc/live_metric_alert_bloc.dart';
-import '../widgets/alert_card.dart';
 import '../widgets/monitoring_card.dart';
 import '../widgets/notification_toggle_card.dart';
 
@@ -57,7 +55,7 @@ class AnomalyAlertsScreen extends StatelessWidget {
                   itemCount: liveMetrics.length,
                   separatorBuilder: (_, __) => const SizedBox(height: 6),
                   itemBuilder: (BuildContext context, int index) {
-                    return SizedBox();
+                    return const SizedBox();
                     // return AlertCard(alert: liveMetrics[index]);
                   },
                 );

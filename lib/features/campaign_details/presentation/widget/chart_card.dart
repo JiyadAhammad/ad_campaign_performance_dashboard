@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../../core/widgets/custom_card.dart';
 import '../../../../core/widgets/custom_text.dart';
-import '../../data/model/sample_model.dart';
+import '../../domain/entity/campaign_details_history_entity.dart';
 
 class ForecastChartCard extends StatelessWidget {
   const ForecastChartCard({
@@ -13,7 +13,7 @@ class ForecastChartCard extends StatelessWidget {
     required this.forecast,
   });
 
-  final List<DailyMetric> history;
+  final List<CampaignHistoryEntity> history;
   final List<double> forecast;
 
   @override
@@ -115,7 +115,7 @@ class ForecastChartCard extends StatelessWidget {
     /// HISTORY
     ///
     final List<FlSpot> historySpots = history.asMap().entries.map((
-      MapEntry<int, DailyMetric> e,
+      MapEntry<int, CampaignHistoryEntity> e,
     ) {
       return FlSpot(e.key.toDouble(), e.value.ctr);
     }).toList();

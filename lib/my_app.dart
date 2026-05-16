@@ -4,6 +4,7 @@ import 'package:nested/nested.dart';
 
 import 'core/di/injection.dart';
 import 'core/environment/env.dart';
+import 'core/route/app_router.dart';
 import 'core/theme/theme.dart';
 import 'features/anomaly_alerts/presentation/bloc/live_metric_alert_bloc.dart';
 import 'features/campaigns/presentation/bloc/campaign_bloc.dart';
@@ -26,16 +27,11 @@ class MainApp extends StatelessWidget {
               sl<SpendSummaryBloc>()
                 ..add(const SpendSummaryEvent.getSpendSummary()),
         ),
-        BlocProvider<SpendSummaryBloc>(
-          create: (_) =>
-              sl<SpendSummaryBloc>()
-                ..add(const SpendSummaryEvent.getSpendSummary()),
-        ),
-        BlocProvider<LiveMetricAlertBloc>(
-          create: (_) =>
-              sl<LiveMetricAlertBloc>()
-                ..add(const LiveMetricAlertEvent.getLiveMetricAlert()),
-        ),
+        // BlocProvider<LiveMetricAlertBloc>(
+        //   create: (_) =>
+        //       sl<LiveMetricAlertBloc>()
+        //         ..add(const LiveMetricAlertEvent.getLiveMetricAlert()),
+        // ),
       ],
       child: const _MyApp(),
     );
@@ -54,14 +50,14 @@ class _MyApp extends StatelessWidget {
     return ValueListenableBuilder<ThemeMode>(
       valueListenable: themeNotifier,
       builder: (_, ThemeMode mode, _) {
-        return MaterialApp(
+        return MaterialApp.router(
           title: Environment.current == AppEnvironment.dev
               ? 'Ad Campaign dev'
               : 'Ad Campaign',
           themeMode: mode,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
-          home: RootNavigation(),
+          routerConfig: appRouter,
         );
       },
     );

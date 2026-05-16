@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/date_extension.dart';
 import '../../../../core/extensions/number_extension.dart';
@@ -19,220 +20,237 @@ class CampaignCard extends StatelessWidget {
     final bool isActive = campaign.status == 'Active';
     final bool isPaused = campaign.status == 'Paused';
 
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: AppColors.darkCard,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.white10),
-      ),
-      child: Column(
-        crossAxisAlignment: .start,
-        children: <Widget>[
-          ///
-          /// HEADER
-          ///
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                height: 41,
-                width: 41,
-                decoration: BoxDecoration(
-                  color: AppColors.primary.withAlpha(20),
-                  borderRadius: BorderRadius.circular(8),
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed(
+          'campaign-details',
+
+          extra: <String, dynamic>{
+            'campaignId': campaign.id,
+            'campaignName': campaign.name,
+            'campaignStatus': campaign.status,
+            'campaignType': campaign.objective,
+          },
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: AppColors.darkCard,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.white10),
+        ),
+        child: Column(
+          crossAxisAlignment: .start,
+          children: <Widget>[
+            ///
+            /// HEADER
+            ///
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  height: 41,
+                  width: 41,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withAlpha(20),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: CustomCachedNetworkImage(imageUrl: campaign.thumbnail),
+                  // child: Icon(campaign., color: AppColors.primary),
                 ),
-                child: CustomCachedNetworkImage(imageUrl: campaign.thumbnail),
-                // child: Icon(campaign., color: AppColors.primary),
-              ),
 
-              const SizedBox(width: 12),
+                const SizedBox(width: 12),
 
-              ///
-              /// TITLE
-              ///
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: .start,
-                  spacing: 2,
-                  children: <Widget>[
-                    AppText(campaign.name, variant: TextVariant.labelMedium),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 3,
+                ///
+                /// TITLE
+                ///
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: .start,
+                    spacing: 2,
+                    children: <Widget>[
+                      AppText(campaign.name, variant: TextVariant.labelMedium),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 3,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.primary.withAlpha(20),
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                        child: AppText(
+                          campaign.objective,
+                          variant: TextVariant.captionRegular,
+                          color: AppColors.primary,
+                        ),
                       ),
-                      decoration: BoxDecoration(
-                        color: AppColors.primary.withAlpha(20),
-                        borderRadius: BorderRadius.circular(2),
+                    ],
+                  ),
+                ),
+
+                ///
+                /// STATUS
+                ///
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: isActive
+                        ? AppColors.success.withAlpha(30)
+                        : isPaused
+                        ? AppColors.warning.withAlpha(30)
+                        : AppColors.error.withAlpha(30),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                  child: Row(
+                    spacing: 3,
+                    children: <Widget>[
+                      CircleAvatar(
+                        radius: 3,
+                        backgroundColor: isActive
+                            ? AppColors.success
+                            : isPaused
+                            ? AppColors.warning
+                            : AppColors.error,
                       ),
-                      child: AppText(
-                        campaign.objective,
-                        variant: TextVariant.captionRegular,
-                        color: AppColors.primary,
+
+                      AppText(
+                        campaign.status,
+                        variant: TextVariant.captionMedium,
+                        color: isActive
+                            ? AppColors.success
+                            : isPaused
+                            ? AppColors.warning
+                            : AppColors.error,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
+                const SizedBox(width: 6),
+                const Icon(Icons.more_horiz),
+              ],
+            ),
 
-              ///
-              /// STATUS
-              ///
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                decoration: BoxDecoration(
-                  color: isActive
-                      ? AppColors.success.withAlpha(30)
-                      : isPaused
-                      ? AppColors.warning.withAlpha(30)
-                      : AppColors.error.withAlpha(30),
-                  borderRadius: BorderRadius.circular(2),
+            const SizedBox(height: 12),
+
+            ///
+            /// SPEND
+            ///
+            const AppText(
+              'Total spend',
+              variant: TextVariant.captionRegular,
+              color: Colors.white60,
+            ),
+
+            const SizedBox(height: 4),
+
+            Row(
+              children: <Widget>[
+                AppText(
+                  '${campaign.spend} ${campaign.currency}',
+                  variant: TextVariant.labelMedium,
                 ),
-                child: Row(
-                  spacing: 3,
-                  children: <Widget>[
-                    CircleAvatar(
-                      radius: 3,
-                      backgroundColor: isActive
-                          ? AppColors.success
-                          : isPaused
-                          ? AppColors.warning
-                          : AppColors.error,
-                    ),
-
-                    AppText(
-                      campaign.status,
-                      variant: TextVariant.captionMedium,
-                      color: isActive
-                          ? AppColors.success
-                          : isPaused
-                          ? AppColors.warning
-                          : AppColors.error,
-                    ),
-                  ],
+                AppText(
+                  ' / ${campaign.budget} ${campaign.currency}',
+                  variant: TextVariant.labelMedium,
+                  color: Colors.white60,
                 ),
-              ),
-              const SizedBox(width: 6),
-              const Icon(Icons.more_horiz),
-            ],
-          ),
+              ],
+            ),
 
-          const SizedBox(height: 12),
+            const SizedBox(height: 8),
 
-          ///
-          /// SPEND
-          ///
-          const AppText(
-            'Total spend',
-            variant: TextVariant.captionRegular,
-            color: Colors.white60,
-          ),
-
-          const SizedBox(height: 4),
-
-          Row(
-            children: <Widget>[
-              AppText(
-                '${campaign.spend} ${campaign.currency}',
-                variant: TextVariant.labelMedium,
-              ),
-              AppText(
-                ' / ${campaign.budget} ${campaign.currency}',
-                variant: TextVariant.labelMedium,
-                color: Colors.white60,
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 8),
-
-          ///
-          /// PROGRESS
-          ///
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: LinearProgressIndicator(
-                    value: campaign.progressValue,
-                    minHeight: 6,
-                    backgroundColor: AppColors.progressBg,
+            ///
+            /// PROGRESS
+            ///
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    valueColor: const AlwaysStoppedAnimation<Color?>(
-                      AppColors.primary,
+                    child: LinearProgressIndicator(
+                      value: campaign.progressValue,
+                      minHeight: 6,
+                      backgroundColor: AppColors.progressBg,
+                      borderRadius: BorderRadius.circular(16),
+                      valueColor: const AlwaysStoppedAnimation<Color?>(
+                        AppColors.primary,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              AppText(
-                '${campaign.budgetUtilization.toInt()}%',
-                variant: TextVariant.captionMedium,
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 18),
-
-          ///
-          /// STATS
-          ///
-          Row(
-            spacing: 10,
-            children: <Widget>[
-              Expanded(
-                child: _StatCard(
-                  icon: Icons.remove_red_eye_outlined,
-                  value: campaign.impressions.toBudgetFormat(),
-                  label: 'Impressions',
+                const SizedBox(width: 10),
+                AppText(
+                  '${campaign.budgetUtilization.toInt()}%',
+                  variant: TextVariant.captionMedium,
                 ),
-              ),
+              ],
+            ),
 
-              Expanded(
-                child: _StatCard(
-                  icon: Icons.ads_click_outlined,
-                  value: campaign.clicks.toBudgetFormat(),
-                  label: 'Clicks',
-                ),
-              ),
+            const SizedBox(height: 18),
 
-              Expanded(
-                child: _StatCard(
-                  icon: Icons.trending_up,
-                  value: '${campaign.ctr}',
-                  label: 'CTR',
+            ///
+            /// STATS
+            ///
+            Row(
+              spacing: 10,
+              children: <Widget>[
+                Expanded(
+                  child: _StatCard(
+                    icon: Icons.remove_red_eye_outlined,
+                    value: campaign.impressions.toBudgetFormat(),
+                    label: 'Impressions',
+                  ),
                 ),
-              ),
-            ],
-          ),
 
-          const SizedBox(height: 18),
+                Expanded(
+                  child: _StatCard(
+                    icon: Icons.ads_click_outlined,
+                    value: campaign.clicks.toBudgetFormat(),
+                    label: 'Clicks',
+                  ),
+                ),
 
-          ///
-          /// FOOTER
-          ///
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: _BottomInfo(
-                  icon: Icons.calendar_today_outlined,
-                  title: 'Start date',
-                  value: campaign.startDate.toDate_dd_MMM_yyyy(),
+                Expanded(
+                  child: _StatCard(
+                    icon: Icons.trending_up,
+                    value: '${campaign.ctr}',
+                    label: 'CTR',
+                  ),
                 ),
-              ),
-              Expanded(
-                child: _BottomInfo(
-                  icon: Icons.public,
-                  title: 'Audience',
-                  value: campaign.channel,
+              ],
+            ),
+
+            const SizedBox(height: 18),
+
+            ///
+            /// FOOTER
+            ///
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: _BottomInfo(
+                    icon: Icons.calendar_today_outlined,
+                    title: 'Start date',
+                    value: campaign.startDate.toDate_dd_MMM_yyyy(),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+                Expanded(
+                  child: _BottomInfo(
+                    icon: Icons.public,
+                    title: 'Audience',
+                    value: campaign.channel,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

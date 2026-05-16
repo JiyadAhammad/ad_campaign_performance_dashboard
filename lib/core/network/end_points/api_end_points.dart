@@ -17,7 +17,8 @@ class ApiEndPoints {
       {snapshot: Snapshot}
   */
   static const String _v1 = '/v1';
-  static String get campaigns => '$_v1/campaigns ';
+  static String get campaigns => '$_v1/campaigns';
   static String get campaignSummary => '$campaigns/summary ';
   static String get campaignMetrics => '$campaigns/metrics/live';
+  static String get campaignForecast => '$_v1/forecast/ctr';
 }
