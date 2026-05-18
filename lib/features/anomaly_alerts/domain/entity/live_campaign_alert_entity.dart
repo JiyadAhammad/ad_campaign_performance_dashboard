@@ -55,10 +55,5 @@ class LiveCampaignMetricsEntity extends Equatable {
     return ctrLastHour * 100;
   }
 
-  ///
-  /// SAFE CTR STRING
-  ///
-  String get ctrFormatted {
-    return '${ctrPercentage.toStringAsFixed(1)}%';
-  }
+
 }

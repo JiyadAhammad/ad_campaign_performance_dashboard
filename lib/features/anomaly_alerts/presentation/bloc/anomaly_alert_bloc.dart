@@ -47,7 +47,7 @@ class AnomalyAlertBloc extends Bloc<AnomalyAlertEvent, AnomalyAlertState> {
         );
       },
       (LiveCampaignMetricsResponseEntity liveCampaignMetricsEntity) {
-        add(const AnomalyAlertEvent.getAnomalyDetect());
+
         emit(
           state.copyWith(
             isLoading: false,

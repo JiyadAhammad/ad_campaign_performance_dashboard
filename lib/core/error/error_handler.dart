@@ -12,9 +12,11 @@ class ErrorHandler {
         return NetworkException('No internet connection');
       }
 
-      return ServerException(
-        (error.response?.data['message'] ?? 'Something went wrong') as String,
-      );
+      final dynamic data = error.response?.data;
+      if (data is Map<String, dynamic> && data.containsKey('message')) {
+        return ServerException(data['message'] as String);
+      }
+      return ServerException('Something went wrong');
     }
 
     return UnknownException(error.toString());

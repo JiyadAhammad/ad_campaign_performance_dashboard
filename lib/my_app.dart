@@ -29,7 +29,8 @@ class MainApp extends StatelessWidget {
         BlocProvider<AnomalyAlertBloc>(
           create: (_) =>
               sl<AnomalyAlertBloc>()
-                ..add(const AnomalyAlertEvent.getLiveMetricAlert()),
+                ..add(const AnomalyAlertEvent.getLiveMetricAlert())
+                ..add(const AnomalyAlertEvent.getAnomalyDetect()),
         ),
       ],
       child: const _MyApp(),
