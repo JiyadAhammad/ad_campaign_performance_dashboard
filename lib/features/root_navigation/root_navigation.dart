@@ -18,9 +18,14 @@ import '../profile/presentation/pages/profile.dart';
 import '../spend_summary/presentation/pages/spend_summary.dart';
 import 'data/model/navigation_model.dart';
 
-class RootNavigation extends StatelessWidget {
-  RootNavigation({super.key});
+class RootNavigation extends StatefulWidget {
+  const RootNavigation({super.key});
 
+  @override
+  State<RootNavigation> createState() => _RootNavigationState();
+}
+
+class _RootNavigationState extends State<RootNavigation> {
   ///
   /// NAVIGATION INDEX
   ///
@@ -32,6 +37,12 @@ class RootNavigation extends StatelessWidget {
     AnomalyAlertsScreen(),
     ProfileScreen(),
   ];
+
+  @override
+  void dispose() {
+    currentIndexNotifier.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
