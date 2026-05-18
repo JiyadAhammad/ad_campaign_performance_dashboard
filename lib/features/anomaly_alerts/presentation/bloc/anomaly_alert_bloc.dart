@@ -5,6 +5,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/error/failures.dart';
+import '../../../../core/services/local_notification_service.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../../domain/entity/anomaly_detect_entity.dart';
 import '../../domain/entity/live_campaign_alert_entity.dart';
@@ -29,6 +30,7 @@ class AnomalyAlertBloc extends Bloc<AnomalyAlertEvent, AnomalyAlertState> {
   final GetAnomalyDetectUseCase getAnomalyDetectUseCase;
 
   Timer? _anomalyPollingTimer;
+  final List<String> _existingAnomalyIds = <String>[];
 
   Future<void> _onGetLiveMetricAlert(
     _GetLiveMetricAlert event,
@@ -81,7 +83,30 @@ class AnomalyAlertBloc extends Bloc<AnomalyAlertEvent, AnomalyAlertState> {
           ),
         );
       },
-      (AnomalyDetectResponseEntity anomalyDetectResponseEntity) {
+      (AnomalyDetectResponseEntity anomalyDetectResponseEntity) async {
+        ///
+        /// DETECT NEW ANOMALIES
+        ///
+        for (final AnomalyEntity anomaly
+            in anomalyDetectResponseEntity.anomalies) {
+          final bool isNew = !_existingAnomalyIds.contains(anomaly.id);
+
+          if (isNew) {
+            ///
+            /// SAVE ID
+            ///
+            _existingAnomalyIds.add(anomaly.id);
+
+            ///
+            /// SHOW LOCAL NOTIFICATION
+            ///
+            await LocalNotificationService.showNotification(
+              title: anomaly.campaignName,
+              body: anomaly.message,
+            );
+          }
+        }
+
         emit(
           state.copyWith(
             isLoading: false,

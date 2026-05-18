@@ -9,6 +9,7 @@ import '../../domain/entity/campaign_details_entity.dart';
 import '../../domain/entity/campaign_details_history_entity.dart';
 import '../../domain/entity/campaign_forecast_entity.dart';
 import '../bloc/campaign_details_bloc.dart';
+import '../widget/campaign_details_shimmer.dart';
 import '../widget/chart_card.dart';
 import '../widget/metric_card.dart';
 import '../widget/recommendation_card.dart';
@@ -34,10 +35,7 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<CampaignDetailsBloc>().add(
-        CampaignDetailsEvent.getCampaignDetails(campaignId: widget.campaignId),
-      );
-      context.read<CampaignDetailsBloc>().add(
-        CampaignDetailsEvent.getCampaignDetailsHistory(
+        CampaignDetailsEvent.loadCampaignCompleteData(
           campaignId: widget.campaignId,
         ),
       );
@@ -87,7 +85,7 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
       body: BlocBuilder<CampaignDetailsBloc, CampaignDetailsState>(
         builder: (BuildContext context, CampaignDetailsState state) {
           if (state.isLoading) {
-            return const CircularProgressIndicator.adaptive();
+            return const CampaignDetailsShimmer();
           }
           if (state.isError) {
             return Center(child: AppText('${state.errorMessage}'));

@@ -86,13 +86,11 @@ extension CampaignDetailsEventPatterns on CampaignDetailsEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _GetCampaignDetails value)?  getCampaignDetails,TResult Function( _GetCampaignDetailsHistory value)?  getCampaignDetailsHistory,TResult Function( _GetCampaignForecast value)?  getCampaignForecast,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _LoadCampaignCompleteData value)?  loadCampaignCompleteData,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _GetCampaignDetails() when getCampaignDetails != null:
-return getCampaignDetails(_that);case _GetCampaignDetailsHistory() when getCampaignDetailsHistory != null:
-return getCampaignDetailsHistory(_that);case _GetCampaignForecast() when getCampaignForecast != null:
-return getCampaignForecast(_that);case _:
+case _LoadCampaignCompleteData() when loadCampaignCompleteData != null:
+return loadCampaignCompleteData(_that);case _:
   return orElse();
 
 }
@@ -110,13 +108,11 @@ return getCampaignForecast(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _GetCampaignDetails value)  getCampaignDetails,required TResult Function( _GetCampaignDetailsHistory value)  getCampaignDetailsHistory,required TResult Function( _GetCampaignForecast value)  getCampaignForecast,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _LoadCampaignCompleteData value)  loadCampaignCompleteData,}){
 final _that = this;
 switch (_that) {
-case _GetCampaignDetails():
-return getCampaignDetails(_that);case _GetCampaignDetailsHistory():
-return getCampaignDetailsHistory(_that);case _GetCampaignForecast():
-return getCampaignForecast(_that);case _:
+case _LoadCampaignCompleteData():
+return loadCampaignCompleteData(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -133,13 +129,11 @@ return getCampaignForecast(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _GetCampaignDetails value)?  getCampaignDetails,TResult? Function( _GetCampaignDetailsHistory value)?  getCampaignDetailsHistory,TResult? Function( _GetCampaignForecast value)?  getCampaignForecast,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _LoadCampaignCompleteData value)?  loadCampaignCompleteData,}){
 final _that = this;
 switch (_that) {
-case _GetCampaignDetails() when getCampaignDetails != null:
-return getCampaignDetails(_that);case _GetCampaignDetailsHistory() when getCampaignDetailsHistory != null:
-return getCampaignDetailsHistory(_that);case _GetCampaignForecast() when getCampaignForecast != null:
-return getCampaignForecast(_that);case _:
+case _LoadCampaignCompleteData() when loadCampaignCompleteData != null:
+return loadCampaignCompleteData(_that);case _:
   return null;
 
 }
@@ -156,12 +150,10 @@ return getCampaignForecast(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String campaignId)?  getCampaignDetails,TResult Function( String campaignId)?  getCampaignDetailsHistory,TResult Function( String campaignId,  int horizonDays,  List<CampaignHistoryEntity> campaignHistory)?  getCampaignForecast,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String campaignId)?  loadCampaignCompleteData,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _GetCampaignDetails() when getCampaignDetails != null:
-return getCampaignDetails(_that.campaignId);case _GetCampaignDetailsHistory() when getCampaignDetailsHistory != null:
-return getCampaignDetailsHistory(_that.campaignId);case _GetCampaignForecast() when getCampaignForecast != null:
-return getCampaignForecast(_that.campaignId,_that.horizonDays,_that.campaignHistory);case _:
+case _LoadCampaignCompleteData() when loadCampaignCompleteData != null:
+return loadCampaignCompleteData(_that.campaignId);case _:
   return orElse();
 
 }
@@ -179,12 +171,10 @@ return getCampaignForecast(_that.campaignId,_that.horizonDays,_that.campaignHist
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String campaignId)  getCampaignDetails,required TResult Function( String campaignId)  getCampaignDetailsHistory,required TResult Function( String campaignId,  int horizonDays,  List<CampaignHistoryEntity> campaignHistory)  getCampaignForecast,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String campaignId)  loadCampaignCompleteData,}) {final _that = this;
 switch (_that) {
-case _GetCampaignDetails():
-return getCampaignDetails(_that.campaignId);case _GetCampaignDetailsHistory():
-return getCampaignDetailsHistory(_that.campaignId);case _GetCampaignForecast():
-return getCampaignForecast(_that.campaignId,_that.horizonDays,_that.campaignHistory);case _:
+case _LoadCampaignCompleteData():
+return loadCampaignCompleteData(_that.campaignId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -201,12 +191,10 @@ return getCampaignForecast(_that.campaignId,_that.horizonDays,_that.campaignHist
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String campaignId)?  getCampaignDetails,TResult? Function( String campaignId)?  getCampaignDetailsHistory,TResult? Function( String campaignId,  int horizonDays,  List<CampaignHistoryEntity> campaignHistory)?  getCampaignForecast,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String campaignId)?  loadCampaignCompleteData,}) {final _that = this;
 switch (_that) {
-case _GetCampaignDetails() when getCampaignDetails != null:
-return getCampaignDetails(_that.campaignId);case _GetCampaignDetailsHistory() when getCampaignDetailsHistory != null:
-return getCampaignDetailsHistory(_that.campaignId);case _GetCampaignForecast() when getCampaignForecast != null:
-return getCampaignForecast(_that.campaignId,_that.horizonDays,_that.campaignHistory);case _:
+case _LoadCampaignCompleteData() when loadCampaignCompleteData != null:
+return loadCampaignCompleteData(_that.campaignId);case _:
   return null;
 
 }
@@ -217,8 +205,8 @@ return getCampaignForecast(_that.campaignId,_that.horizonDays,_that.campaignHist
 /// @nodoc
 
 
-class _GetCampaignDetails implements CampaignDetailsEvent {
-  const _GetCampaignDetails({required this.campaignId});
+class _LoadCampaignCompleteData implements CampaignDetailsEvent {
+  const _LoadCampaignCompleteData({required this.campaignId});
   
 
 @override final  String campaignId;
@@ -227,13 +215,13 @@ class _GetCampaignDetails implements CampaignDetailsEvent {
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$GetCampaignDetailsCopyWith<_GetCampaignDetails> get copyWith => __$GetCampaignDetailsCopyWithImpl<_GetCampaignDetails>(this, _$identity);
+_$LoadCampaignCompleteDataCopyWith<_LoadCampaignCompleteData> get copyWith => __$LoadCampaignCompleteDataCopyWithImpl<_LoadCampaignCompleteData>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetCampaignDetails&&(identical(other.campaignId, campaignId) || other.campaignId == campaignId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoadCampaignCompleteData&&(identical(other.campaignId, campaignId) || other.campaignId == campaignId));
 }
 
 
@@ -242,15 +230,15 @@ int get hashCode => Object.hash(runtimeType,campaignId);
 
 @override
 String toString() {
-  return 'CampaignDetailsEvent.getCampaignDetails(campaignId: $campaignId)';
+  return 'CampaignDetailsEvent.loadCampaignCompleteData(campaignId: $campaignId)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$GetCampaignDetailsCopyWith<$Res> implements $CampaignDetailsEventCopyWith<$Res> {
-  factory _$GetCampaignDetailsCopyWith(_GetCampaignDetails value, $Res Function(_GetCampaignDetails) _then) = __$GetCampaignDetailsCopyWithImpl;
+abstract mixin class _$LoadCampaignCompleteDataCopyWith<$Res> implements $CampaignDetailsEventCopyWith<$Res> {
+  factory _$LoadCampaignCompleteDataCopyWith(_LoadCampaignCompleteData value, $Res Function(_LoadCampaignCompleteData) _then) = __$LoadCampaignCompleteDataCopyWithImpl;
 @override @useResult
 $Res call({
  String campaignId
@@ -261,161 +249,19 @@ $Res call({
 
 }
 /// @nodoc
-class __$GetCampaignDetailsCopyWithImpl<$Res>
-    implements _$GetCampaignDetailsCopyWith<$Res> {
-  __$GetCampaignDetailsCopyWithImpl(this._self, this._then);
+class __$LoadCampaignCompleteDataCopyWithImpl<$Res>
+    implements _$LoadCampaignCompleteDataCopyWith<$Res> {
+  __$LoadCampaignCompleteDataCopyWithImpl(this._self, this._then);
 
-  final _GetCampaignDetails _self;
-  final $Res Function(_GetCampaignDetails) _then;
-
-/// Create a copy of CampaignDetailsEvent
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? campaignId = null,}) {
-  return _then(_GetCampaignDetails(
-campaignId: null == campaignId ? _self.campaignId : campaignId // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
-
-/// @nodoc
-
-
-class _GetCampaignDetailsHistory implements CampaignDetailsEvent {
-  const _GetCampaignDetailsHistory({required this.campaignId});
-  
-
-@override final  String campaignId;
-
-/// Create a copy of CampaignDetailsEvent
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$GetCampaignDetailsHistoryCopyWith<_GetCampaignDetailsHistory> get copyWith => __$GetCampaignDetailsHistoryCopyWithImpl<_GetCampaignDetailsHistory>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetCampaignDetailsHistory&&(identical(other.campaignId, campaignId) || other.campaignId == campaignId));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,campaignId);
-
-@override
-String toString() {
-  return 'CampaignDetailsEvent.getCampaignDetailsHistory(campaignId: $campaignId)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$GetCampaignDetailsHistoryCopyWith<$Res> implements $CampaignDetailsEventCopyWith<$Res> {
-  factory _$GetCampaignDetailsHistoryCopyWith(_GetCampaignDetailsHistory value, $Res Function(_GetCampaignDetailsHistory) _then) = __$GetCampaignDetailsHistoryCopyWithImpl;
-@override @useResult
-$Res call({
- String campaignId
-});
-
-
-
-
-}
-/// @nodoc
-class __$GetCampaignDetailsHistoryCopyWithImpl<$Res>
-    implements _$GetCampaignDetailsHistoryCopyWith<$Res> {
-  __$GetCampaignDetailsHistoryCopyWithImpl(this._self, this._then);
-
-  final _GetCampaignDetailsHistory _self;
-  final $Res Function(_GetCampaignDetailsHistory) _then;
+  final _LoadCampaignCompleteData _self;
+  final $Res Function(_LoadCampaignCompleteData) _then;
 
 /// Create a copy of CampaignDetailsEvent
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? campaignId = null,}) {
-  return _then(_GetCampaignDetailsHistory(
+  return _then(_LoadCampaignCompleteData(
 campaignId: null == campaignId ? _self.campaignId : campaignId // ignore: cast_nullable_to_non_nullable
 as String,
-  ));
-}
-
-
-}
-
-/// @nodoc
-
-
-class _GetCampaignForecast implements CampaignDetailsEvent {
-  const _GetCampaignForecast({required this.campaignId, required this.horizonDays, required final  List<CampaignHistoryEntity> campaignHistory}): _campaignHistory = campaignHistory;
-  
-
-@override final  String campaignId;
- final  int horizonDays;
- final  List<CampaignHistoryEntity> _campaignHistory;
- List<CampaignHistoryEntity> get campaignHistory {
-  if (_campaignHistory is EqualUnmodifiableListView) return _campaignHistory;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_campaignHistory);
-}
-
-
-/// Create a copy of CampaignDetailsEvent
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$GetCampaignForecastCopyWith<_GetCampaignForecast> get copyWith => __$GetCampaignForecastCopyWithImpl<_GetCampaignForecast>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetCampaignForecast&&(identical(other.campaignId, campaignId) || other.campaignId == campaignId)&&(identical(other.horizonDays, horizonDays) || other.horizonDays == horizonDays)&&const DeepCollectionEquality().equals(other._campaignHistory, _campaignHistory));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,campaignId,horizonDays,const DeepCollectionEquality().hash(_campaignHistory));
-
-@override
-String toString() {
-  return 'CampaignDetailsEvent.getCampaignForecast(campaignId: $campaignId, horizonDays: $horizonDays, campaignHistory: $campaignHistory)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$GetCampaignForecastCopyWith<$Res> implements $CampaignDetailsEventCopyWith<$Res> {
-  factory _$GetCampaignForecastCopyWith(_GetCampaignForecast value, $Res Function(_GetCampaignForecast) _then) = __$GetCampaignForecastCopyWithImpl;
-@override @useResult
-$Res call({
- String campaignId, int horizonDays, List<CampaignHistoryEntity> campaignHistory
-});
-
-
-
-
-}
-/// @nodoc
-class __$GetCampaignForecastCopyWithImpl<$Res>
-    implements _$GetCampaignForecastCopyWith<$Res> {
-  __$GetCampaignForecastCopyWithImpl(this._self, this._then);
-
-  final _GetCampaignForecast _self;
-  final $Res Function(_GetCampaignForecast) _then;
-
-/// Create a copy of CampaignDetailsEvent
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? campaignId = null,Object? horizonDays = null,Object? campaignHistory = null,}) {
-  return _then(_GetCampaignForecast(
-campaignId: null == campaignId ? _self.campaignId : campaignId // ignore: cast_nullable_to_non_nullable
-as String,horizonDays: null == horizonDays ? _self.horizonDays : horizonDays // ignore: cast_nullable_to_non_nullable
-as int,campaignHistory: null == campaignHistory ? _self._campaignHistory : campaignHistory // ignore: cast_nullable_to_non_nullable
-as List<CampaignHistoryEntity>,
   ));
 }
 
@@ -425,7 +271,14 @@ as List<CampaignHistoryEntity>,
 /// @nodoc
 mixin _$CampaignDetailsState {
 
- bool get isLoading; CampaignDetailEntity? get campaignDetailsEntity; CampaignDetailsHistoryEntity? get campaignDetailsHistoryEntity; CampaignForecastResponseEntity? get campaignForecastEntity; String? get successMessage; bool get isError; String? get errorMessage;
+// @Default(false) bool isLoading,
+// CampaignDetailEntity? campaignDetailsEntity,
+// CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity,
+// CampaignForecastResponseEntity? campaignForecastEntity,
+// String? successMessage,
+// @Default(false) bool isError,
+// String? errorMessage,
+ bool get isLoading; bool get isError; String? get errorMessage; String? get successMessage; CampaignDetailEntity? get campaignDetailsEntity; CampaignDetailsHistoryEntity? get campaignDetailsHistoryEntity; CampaignForecastResponseEntity? get campaignForecastEntity;
 /// Create a copy of CampaignDetailsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -436,16 +289,16 @@ $CampaignDetailsStateCopyWith<CampaignDetailsState> get copyWith => _$CampaignDe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CampaignDetailsState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.campaignDetailsEntity, campaignDetailsEntity) || other.campaignDetailsEntity == campaignDetailsEntity)&&(identical(other.campaignDetailsHistoryEntity, campaignDetailsHistoryEntity) || other.campaignDetailsHistoryEntity == campaignDetailsHistoryEntity)&&(identical(other.campaignForecastEntity, campaignForecastEntity) || other.campaignForecastEntity == campaignForecastEntity)&&(identical(other.successMessage, successMessage) || other.successMessage == successMessage)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CampaignDetailsState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.successMessage, successMessage) || other.successMessage == successMessage)&&(identical(other.campaignDetailsEntity, campaignDetailsEntity) || other.campaignDetailsEntity == campaignDetailsEntity)&&(identical(other.campaignDetailsHistoryEntity, campaignDetailsHistoryEntity) || other.campaignDetailsHistoryEntity == campaignDetailsHistoryEntity)&&(identical(other.campaignForecastEntity, campaignForecastEntity) || other.campaignForecastEntity == campaignForecastEntity));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,campaignDetailsEntity,campaignDetailsHistoryEntity,campaignForecastEntity,successMessage,isError,errorMessage);
+int get hashCode => Object.hash(runtimeType,isLoading,isError,errorMessage,successMessage,campaignDetailsEntity,campaignDetailsHistoryEntity,campaignForecastEntity);
 
 @override
 String toString() {
-  return 'CampaignDetailsState(isLoading: $isLoading, campaignDetailsEntity: $campaignDetailsEntity, campaignDetailsHistoryEntity: $campaignDetailsHistoryEntity, campaignForecastEntity: $campaignForecastEntity, successMessage: $successMessage, isError: $isError, errorMessage: $errorMessage)';
+  return 'CampaignDetailsState(isLoading: $isLoading, isError: $isError, errorMessage: $errorMessage, successMessage: $successMessage, campaignDetailsEntity: $campaignDetailsEntity, campaignDetailsHistoryEntity: $campaignDetailsHistoryEntity, campaignForecastEntity: $campaignForecastEntity)';
 }
 
 
@@ -456,7 +309,7 @@ abstract mixin class $CampaignDetailsStateCopyWith<$Res>  {
   factory $CampaignDetailsStateCopyWith(CampaignDetailsState value, $Res Function(CampaignDetailsState) _then) = _$CampaignDetailsStateCopyWithImpl;
 @useResult
 $Res call({
- bool isLoading, CampaignDetailEntity? campaignDetailsEntity, CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity, CampaignForecastResponseEntity? campaignForecastEntity, String? successMessage, bool isError, String? errorMessage
+ bool isLoading, bool isError, String? errorMessage, String? successMessage, CampaignDetailEntity? campaignDetailsEntity, CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity, CampaignForecastResponseEntity? campaignForecastEntity
 });
 
 
@@ -473,16 +326,16 @@ class _$CampaignDetailsStateCopyWithImpl<$Res>
 
 /// Create a copy of CampaignDetailsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? campaignDetailsEntity = freezed,Object? campaignDetailsHistoryEntity = freezed,Object? campaignForecastEntity = freezed,Object? successMessage = freezed,Object? isError = null,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isError = null,Object? errorMessage = freezed,Object? successMessage = freezed,Object? campaignDetailsEntity = freezed,Object? campaignDetailsHistoryEntity = freezed,Object? campaignForecastEntity = freezed,}) {
   return _then(_self.copyWith(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
-as bool,campaignDetailsEntity: freezed == campaignDetailsEntity ? _self.campaignDetailsEntity : campaignDetailsEntity // ignore: cast_nullable_to_non_nullable
+as bool,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
+as bool,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String?,successMessage: freezed == successMessage ? _self.successMessage : successMessage // ignore: cast_nullable_to_non_nullable
+as String?,campaignDetailsEntity: freezed == campaignDetailsEntity ? _self.campaignDetailsEntity : campaignDetailsEntity // ignore: cast_nullable_to_non_nullable
 as CampaignDetailEntity?,campaignDetailsHistoryEntity: freezed == campaignDetailsHistoryEntity ? _self.campaignDetailsHistoryEntity : campaignDetailsHistoryEntity // ignore: cast_nullable_to_non_nullable
 as CampaignDetailsHistoryEntity?,campaignForecastEntity: freezed == campaignForecastEntity ? _self.campaignForecastEntity : campaignForecastEntity // ignore: cast_nullable_to_non_nullable
-as CampaignForecastResponseEntity?,successMessage: freezed == successMessage ? _self.successMessage : successMessage // ignore: cast_nullable_to_non_nullable
-as String?,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
-as bool,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,
+as CampaignForecastResponseEntity?,
   ));
 }
 
@@ -567,10 +420,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  CampaignDetailEntity? campaignDetailsEntity,  CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity,  CampaignForecastResponseEntity? campaignForecastEntity,  String? successMessage,  bool isError,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  bool isError,  String? errorMessage,  String? successMessage,  CampaignDetailEntity? campaignDetailsEntity,  CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity,  CampaignForecastResponseEntity? campaignForecastEntity)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CampaignDetailsState() when $default != null:
-return $default(_that.isLoading,_that.campaignDetailsEntity,_that.campaignDetailsHistoryEntity,_that.campaignForecastEntity,_that.successMessage,_that.isError,_that.errorMessage);case _:
+return $default(_that.isLoading,_that.isError,_that.errorMessage,_that.successMessage,_that.campaignDetailsEntity,_that.campaignDetailsHistoryEntity,_that.campaignForecastEntity);case _:
   return orElse();
 
 }
@@ -588,10 +441,10 @@ return $default(_that.isLoading,_that.campaignDetailsEntity,_that.campaignDetail
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  CampaignDetailEntity? campaignDetailsEntity,  CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity,  CampaignForecastResponseEntity? campaignForecastEntity,  String? successMessage,  bool isError,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  bool isError,  String? errorMessage,  String? successMessage,  CampaignDetailEntity? campaignDetailsEntity,  CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity,  CampaignForecastResponseEntity? campaignForecastEntity)  $default,) {final _that = this;
 switch (_that) {
 case _CampaignDetailsState():
-return $default(_that.isLoading,_that.campaignDetailsEntity,_that.campaignDetailsHistoryEntity,_that.campaignForecastEntity,_that.successMessage,_that.isError,_that.errorMessage);case _:
+return $default(_that.isLoading,_that.isError,_that.errorMessage,_that.successMessage,_that.campaignDetailsEntity,_that.campaignDetailsHistoryEntity,_that.campaignForecastEntity);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -608,10 +461,10 @@ return $default(_that.isLoading,_that.campaignDetailsEntity,_that.campaignDetail
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  CampaignDetailEntity? campaignDetailsEntity,  CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity,  CampaignForecastResponseEntity? campaignForecastEntity,  String? successMessage,  bool isError,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  bool isError,  String? errorMessage,  String? successMessage,  CampaignDetailEntity? campaignDetailsEntity,  CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity,  CampaignForecastResponseEntity? campaignForecastEntity)?  $default,) {final _that = this;
 switch (_that) {
 case _CampaignDetailsState() when $default != null:
-return $default(_that.isLoading,_that.campaignDetailsEntity,_that.campaignDetailsHistoryEntity,_that.campaignForecastEntity,_that.successMessage,_that.isError,_that.errorMessage);case _:
+return $default(_that.isLoading,_that.isError,_that.errorMessage,_that.successMessage,_that.campaignDetailsEntity,_that.campaignDetailsHistoryEntity,_that.campaignForecastEntity);case _:
   return null;
 
 }
@@ -623,16 +476,23 @@ return $default(_that.isLoading,_that.campaignDetailsEntity,_that.campaignDetail
 
 
 class _CampaignDetailsState implements CampaignDetailsState {
-  const _CampaignDetailsState({this.isLoading = false, this.campaignDetailsEntity, this.campaignDetailsHistoryEntity, this.campaignForecastEntity, this.successMessage, this.isError = false, this.errorMessage});
+  const _CampaignDetailsState({this.isLoading = false, this.isError = false, this.errorMessage, this.successMessage, this.campaignDetailsEntity, this.campaignDetailsHistoryEntity, this.campaignForecastEntity});
   
 
+// @Default(false) bool isLoading,
+// CampaignDetailEntity? campaignDetailsEntity,
+// CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity,
+// CampaignForecastResponseEntity? campaignForecastEntity,
+// String? successMessage,
+// @Default(false) bool isError,
+// String? errorMessage,
 @override@JsonKey() final  bool isLoading;
+@override@JsonKey() final  bool isError;
+@override final  String? errorMessage;
+@override final  String? successMessage;
 @override final  CampaignDetailEntity? campaignDetailsEntity;
 @override final  CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity;
 @override final  CampaignForecastResponseEntity? campaignForecastEntity;
-@override final  String? successMessage;
-@override@JsonKey() final  bool isError;
-@override final  String? errorMessage;
 
 /// Create a copy of CampaignDetailsState
 /// with the given fields replaced by the non-null parameter values.
@@ -644,16 +504,16 @@ _$CampaignDetailsStateCopyWith<_CampaignDetailsState> get copyWith => __$Campaig
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CampaignDetailsState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.campaignDetailsEntity, campaignDetailsEntity) || other.campaignDetailsEntity == campaignDetailsEntity)&&(identical(other.campaignDetailsHistoryEntity, campaignDetailsHistoryEntity) || other.campaignDetailsHistoryEntity == campaignDetailsHistoryEntity)&&(identical(other.campaignForecastEntity, campaignForecastEntity) || other.campaignForecastEntity == campaignForecastEntity)&&(identical(other.successMessage, successMessage) || other.successMessage == successMessage)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CampaignDetailsState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.successMessage, successMessage) || other.successMessage == successMessage)&&(identical(other.campaignDetailsEntity, campaignDetailsEntity) || other.campaignDetailsEntity == campaignDetailsEntity)&&(identical(other.campaignDetailsHistoryEntity, campaignDetailsHistoryEntity) || other.campaignDetailsHistoryEntity == campaignDetailsHistoryEntity)&&(identical(other.campaignForecastEntity, campaignForecastEntity) || other.campaignForecastEntity == campaignForecastEntity));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,campaignDetailsEntity,campaignDetailsHistoryEntity,campaignForecastEntity,successMessage,isError,errorMessage);
+int get hashCode => Object.hash(runtimeType,isLoading,isError,errorMessage,successMessage,campaignDetailsEntity,campaignDetailsHistoryEntity,campaignForecastEntity);
 
 @override
 String toString() {
-  return 'CampaignDetailsState(isLoading: $isLoading, campaignDetailsEntity: $campaignDetailsEntity, campaignDetailsHistoryEntity: $campaignDetailsHistoryEntity, campaignForecastEntity: $campaignForecastEntity, successMessage: $successMessage, isError: $isError, errorMessage: $errorMessage)';
+  return 'CampaignDetailsState(isLoading: $isLoading, isError: $isError, errorMessage: $errorMessage, successMessage: $successMessage, campaignDetailsEntity: $campaignDetailsEntity, campaignDetailsHistoryEntity: $campaignDetailsHistoryEntity, campaignForecastEntity: $campaignForecastEntity)';
 }
 
 
@@ -664,7 +524,7 @@ abstract mixin class _$CampaignDetailsStateCopyWith<$Res> implements $CampaignDe
   factory _$CampaignDetailsStateCopyWith(_CampaignDetailsState value, $Res Function(_CampaignDetailsState) _then) = __$CampaignDetailsStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isLoading, CampaignDetailEntity? campaignDetailsEntity, CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity, CampaignForecastResponseEntity? campaignForecastEntity, String? successMessage, bool isError, String? errorMessage
+ bool isLoading, bool isError, String? errorMessage, String? successMessage, CampaignDetailEntity? campaignDetailsEntity, CampaignDetailsHistoryEntity? campaignDetailsHistoryEntity, CampaignForecastResponseEntity? campaignForecastEntity
 });
 
 
@@ -681,16 +541,16 @@ class __$CampaignDetailsStateCopyWithImpl<$Res>
 
 /// Create a copy of CampaignDetailsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? campaignDetailsEntity = freezed,Object? campaignDetailsHistoryEntity = freezed,Object? campaignForecastEntity = freezed,Object? successMessage = freezed,Object? isError = null,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? isError = null,Object? errorMessage = freezed,Object? successMessage = freezed,Object? campaignDetailsEntity = freezed,Object? campaignDetailsHistoryEntity = freezed,Object? campaignForecastEntity = freezed,}) {
   return _then(_CampaignDetailsState(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
-as bool,campaignDetailsEntity: freezed == campaignDetailsEntity ? _self.campaignDetailsEntity : campaignDetailsEntity // ignore: cast_nullable_to_non_nullable
+as bool,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
+as bool,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String?,successMessage: freezed == successMessage ? _self.successMessage : successMessage // ignore: cast_nullable_to_non_nullable
+as String?,campaignDetailsEntity: freezed == campaignDetailsEntity ? _self.campaignDetailsEntity : campaignDetailsEntity // ignore: cast_nullable_to_non_nullable
 as CampaignDetailEntity?,campaignDetailsHistoryEntity: freezed == campaignDetailsHistoryEntity ? _self.campaignDetailsHistoryEntity : campaignDetailsHistoryEntity // ignore: cast_nullable_to_non_nullable
 as CampaignDetailsHistoryEntity?,campaignForecastEntity: freezed == campaignForecastEntity ? _self.campaignForecastEntity : campaignForecastEntity // ignore: cast_nullable_to_non_nullable
-as CampaignForecastResponseEntity?,successMessage: freezed == successMessage ? _self.successMessage : successMessage // ignore: cast_nullable_to_non_nullable
-as String?,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
-as bool,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,
+as CampaignForecastResponseEntity?,
   ));
 }
 

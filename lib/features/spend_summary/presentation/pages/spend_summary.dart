@@ -7,6 +7,7 @@ import '../../domain/entity/spend_summary_entity.dart';
 import '../bloc/spend_summary_bloc.dart';
 import '../widgets/date_range_card.dart';
 import '../widgets/spend_channel_card.dart';
+import '../widgets/spend_summary_shimmer.dart';
 import '../widgets/top_campaign_card.dart';
 import '../widgets/total_spend_card.dart';
 
@@ -21,7 +22,7 @@ class SpendSummaryScreen extends StatelessWidget {
       body: BlocBuilder<SpendSummaryBloc, SpendSummaryState>(
         builder: (BuildContext context, SpendSummaryState state) {
           if (state.isLoading) {
-            return const CircularProgressIndicator.adaptive();
+            return const SpendSummaryShimmer();
           }
           if (state.isError) {
             return Center(child: AppText('${state.errorMessage}'));

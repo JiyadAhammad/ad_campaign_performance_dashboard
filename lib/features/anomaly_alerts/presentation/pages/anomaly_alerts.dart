@@ -6,6 +6,7 @@ import '../../../../core/widgets/custom_text.dart';
 import '../../domain/entity/anomaly_detect_entity.dart';
 import '../bloc/anomaly_alert_bloc.dart';
 import '../widgets/alert_card.dart';
+import '../widgets/anomaly_alert_shimmer.dart';
 import '../widgets/monitoring_card.dart';
 import '../widgets/notification_toggle_card.dart';
 
@@ -41,7 +42,7 @@ class AnomalyAlertsScreen extends StatelessWidget {
             BlocBuilder<AnomalyAlertBloc, AnomalyAlertState>(
               builder: (BuildContext context, AnomalyAlertState state) {
                 if (state.isLoading) {
-                  return const CircularProgressIndicator.adaptive();
+                  return const AnomalyAlertsShimmer();
                 }
                 if (state.isError) {
                   return Center(child: AppText('${state.errorMessage}'));

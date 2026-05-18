@@ -7,6 +7,7 @@ import '../../../../core/widgets/custom_text.dart';
 import '../../domain/entity/campaign_entity.dart';
 import '../bloc/campaign_bloc.dart';
 import '../widget/campaign_card.dart';
+import '../widget/campaign_shimmer.dart';
 
 class CampaignsScreen extends StatelessWidget {
   const CampaignsScreen({super.key});
@@ -67,12 +68,7 @@ class CampaignsScreen extends StatelessWidget {
               child: BlocBuilder<CampaignBloc, CampaignState>(
                 builder: (BuildContext context, CampaignState state) {
                   if (state.isLoading) {
-                    return ListView.builder(
-                      itemCount: 6,
-                      itemBuilder: (_, __) {
-                        return const CircularProgressIndicator.adaptive();
-                      },
-                    );
+                    return const CampaignListItemShimmer();
                   }
                   if (state.isError) {
                     return Center(child: AppText('${state.errorMessage}'));
