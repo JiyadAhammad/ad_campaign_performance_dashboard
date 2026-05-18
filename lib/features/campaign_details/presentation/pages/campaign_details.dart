@@ -19,14 +19,10 @@ class CampaignDetailScreen extends StatefulWidget {
     super.key,
     required this.campaignId,
     required this.campaignName,
-    required this.campaignStatus,
-    required this.campaignType,
   });
 
   final String campaignId;
   final String campaignName;
-  final String campaignStatus;
-  final String campaignType;
 
   @override
   State<CampaignDetailScreen> createState() => _CampaignDetailScreenState();
@@ -66,14 +62,14 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
 
             Row(
               children: <Widget>[
-                _AppBarTag(title: widget.campaignStatus, color: Colors.green),
+                // _AppBarTag(title: widget.campaignStatus, color: Colors.green),
 
-                const SizedBox(width: 8),
+                // const SizedBox(width: 8),
 
-                _AppBarTag(
-                  title: widget.campaignType,
-                  color: AppColors.primary,
-                ),
+                // _AppBarTag(
+                //   title: widget.campaignType,
+                //   color: AppColors.primary,
+                // ),
               ],
             ),
           ],

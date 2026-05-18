@@ -12,7 +12,13 @@ class NotificationToggleCard extends StatefulWidget {
 }
 
 class _NotificationToggleCardState extends State<NotificationToggleCard> {
-  bool enabled = true;
+  final ValueNotifier<bool> isNotificationEnable = ValueNotifier<bool>(true);
+
+  @override
+  void dispose() {
+    isNotificationEnable.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +68,16 @@ class _NotificationToggleCardState extends State<NotificationToggleCard> {
           ///
           /// SWITCH
           ///
-          Switch(
-            value: enabled,
-            activeTrackColor: AppColors.primary,
-            onChanged: (bool value) {
-              setState(() {
-                enabled = value;
-              });
+          ValueListenableBuilder<bool>(
+            valueListenable: isNotificationEnable,
+            builder: (BuildContext context, bool value, Widget? child) {
+              return Switch(
+                value: isNotificationEnable.value,
+                activeTrackColor: AppColors.primary,
+                onChanged: (bool value) {
+                  isNotificationEnable.value = value;
+                },
+              );
             },
           ),
         ],

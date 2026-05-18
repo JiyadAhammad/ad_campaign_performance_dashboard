@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_text.dart';
+import '../../domain/entity/anomaly_detect_entity.dart';
 import '../../domain/entity/live_campaign_alert_entity.dart';
-import '../bloc/live_metric_alert_bloc.dart';
+import '../bloc/anomaly_alert_bloc.dart';
+import '../widgets/alert_card.dart';
 import '../widgets/monitoring_card.dart';
 import '../widgets/notification_toggle_card.dart';
 
@@ -37,8 +39,8 @@ class AnomalyAlertsScreen extends StatelessWidget {
             ///
             /// ALERTS LIST
             ///
-            BlocBuilder<LiveMetricAlertBloc, LiveMetricAlertState>(
-              builder: (BuildContext context, LiveMetricAlertState state) {
+            BlocBuilder<AnomalyAlertBloc, AnomalyAlertState>(
+              builder: (BuildContext context, AnomalyAlertState state) {
                 if (state.isLoading) {
                   return const CircularProgressIndicator.adaptive();
                 }
@@ -48,15 +50,15 @@ class AnomalyAlertsScreen extends StatelessWidget {
 
                 final List<LiveCampaignMetricsEntity> liveMetrics =
                     state.liveCampaignMetricsEntity;
+                final List<AnomalyEntity> anomalies = state.anomalyEntity;
 
                 return ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: liveMetrics.length,
+                  itemCount: anomalies.length,
                   separatorBuilder: (_, __) => const SizedBox(height: 6),
                   itemBuilder: (BuildContext context, int index) {
-                    return const SizedBox();
-                    // return AlertCard(alert: liveMetrics[index]);
+                    return AlertCard(alert: anomalies[index]);
                   },
                 );
               },

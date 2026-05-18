@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entity/live_campaign_alert_entity.dart';
+import '../../../domain/entity/live_campaign_alert_entity.dart';
 
 part 'live_campaign_alert.freezed.dart';
 part 'live_campaign_alert.g.dart';

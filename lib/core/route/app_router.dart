@@ -40,8 +40,6 @@ final GoRouter appRouter = GoRouter(
           child: CampaignDetailScreen(
             campaignId: extra['campaignId'] as String,
             campaignName: extra['campaignName'] as String,
-            campaignStatus: extra['campaignStatus'] as String,
-            campaignType: extra['campaignType'] as String,
           ),
         );
       },

@@ -21,4 +21,5 @@ class ApiEndPoints {
   static String get campaignSummary => '$campaigns/summary ';
   static String get campaignMetrics => '$campaigns/metrics/live';
   static String get campaignForecast => '$_v1/forecast/ctr';
+  static String get anomalyDetect => '$_v1/anomaly/detect';
 }

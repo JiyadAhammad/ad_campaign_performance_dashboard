@@ -28,8 +28,6 @@ class CampaignCard extends StatelessWidget {
           extra: <String, dynamic>{
             'campaignId': campaign.id,
             'campaignName': campaign.name,
-            'campaignStatus': campaign.status,
-            'campaignType': campaign.objective,
           },
         );
       },
