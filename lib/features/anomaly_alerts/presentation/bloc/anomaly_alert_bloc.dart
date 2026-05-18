@@ -22,10 +22,13 @@ class AnomalyAlertBloc extends Bloc<AnomalyAlertEvent, AnomalyAlertState> {
   }) : super(const _AnomalyAlertState()) {
     on<_GetLiveMetricAlert>(_onGetLiveMetricAlert);
     on<_GetAnomalyDetect>(_onGetAnomalyDetect);
+    _startAnomalyPolling();
   }
 
   final GetLiveMetricAlertUseCase getLiveMetricAlertUseCase;
   final GetAnomalyDetectUseCase getAnomalyDetectUseCase;
+
+  Timer? _anomalyPollingTimer;
 
   Future<void> _onGetLiveMetricAlert(
     _GetLiveMetricAlert event,
@@ -47,7 +50,6 @@ class AnomalyAlertBloc extends Bloc<AnomalyAlertEvent, AnomalyAlertState> {
         );
       },
       (LiveCampaignMetricsResponseEntity liveCampaignMetricsEntity) {
-
         emit(
           state.copyWith(
             isLoading: false,
@@ -64,7 +66,7 @@ class AnomalyAlertBloc extends Bloc<AnomalyAlertEvent, AnomalyAlertState> {
     _GetAnomalyDetect event,
     Emitter<AnomalyAlertState> emit,
   ) async {
-    emit(state.copyWith(isLoading: true, isError: false));
+    emit(state.copyWith(isLoading: event.isLoading, isError: false));
 
     final Either<Failure, AnomalyDetectResponseEntity> result =
         await getAnomalyDetectUseCase(NoParams());
@@ -90,5 +92,25 @@ class AnomalyAlertBloc extends Bloc<AnomalyAlertEvent, AnomalyAlertState> {
         );
       },
     );
+  }
+
+  void _startAnomalyPolling() {
+    ///
+    /// FIRST CALL
+    ///
+    add(const AnomalyAlertEvent.getAnomalyDetect(isLoading: true));
+
+    ///
+    /// EVERY 30 SEC
+    ///
+    _anomalyPollingTimer = Timer.periodic(const Duration(seconds: 30), (_) {
+      add(const AnomalyAlertEvent.getAnomalyDetect(isLoading: false));
+    });
+  }
+
+  @override
+  Future<void> close() {
+    _anomalyPollingTimer?.cancel();
+    return super.close();
   }
 }

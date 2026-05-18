@@ -18,7 +18,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.rootNavigation,
       builder: (BuildContext context, GoRouterState state) {
-        return RootNavigation();
+        return const RootNavigation();
       },
     ),
 

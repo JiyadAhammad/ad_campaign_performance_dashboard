@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entity/spend_summary_entity.dart';
 import '../../../../core/enums/enums.dart';
+import '../../domain/entity/spend_summary_entity.dart';
 
 part 'spend_summary_model.freezed.dart';
 part 'spend_summary_model.g.dart';

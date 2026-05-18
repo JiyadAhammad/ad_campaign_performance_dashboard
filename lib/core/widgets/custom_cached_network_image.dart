@@ -31,7 +31,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
         height: height,
         fit: fit,
 
-        placeholder: (context, url) {
+        placeholder: (BuildContext context, String url) {
           return placeholder ??
               SizedBox(
                 width: width,
@@ -42,7 +42,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
               );
         },
 
-        errorWidget: (context, url, error) {
+        errorWidget: (BuildContext context, String url, Object error) {
           return errorWidget ??
               Container(
                 width: width,

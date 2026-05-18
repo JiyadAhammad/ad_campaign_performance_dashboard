@@ -131,7 +131,7 @@ class MiniEmptyState extends StatelessWidget {
             ///
             /// DESCRIPTION
             ///
-            AppText(
+            const AppText(
               'There is no data to display for this period.',
               variant: TextVariant.captionRegular,
               textAlign: TextAlign.center,
@@ -190,7 +190,7 @@ class MiniErrorState extends StatelessWidget {
             ///
             /// DESCRIPTION
             ///
-            AppText(
+            const AppText(
               'Something went wrong',
               variant: TextVariant.captionRegular,
               textAlign: TextAlign.center,

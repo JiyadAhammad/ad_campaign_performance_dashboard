@@ -49,7 +49,7 @@ class ForecastChartCard extends StatelessWidget {
               const SizedBox(width: 6),
               Icon(
                 Icons.info_outline,
-                color: Colors.white.withOpacity(.5),
+                color: Colors.white.withAlpha(50),
                 size: 13,
               ),
               const Spacer(),
@@ -88,7 +88,7 @@ class ForecastChartCard extends StatelessWidget {
           ///
           Row(
             children: <Widget>[
-              _legend('Historical CTR', isDashed: false),
+              _legend('Historical CTR'),
               const SizedBox(width: 15),
               _legend('Forecast CTR', isDashed: true),
             ],
@@ -253,7 +253,9 @@ class ForecastChartCard extends StatelessWidget {
             interval: (maxY / 3).ceilToDouble(),
             reservedSize: 32,
             getTitlesWidget: (double value, TitleMeta meta) {
-              if (value == 0) return const SizedBox();
+              if (value == 0) {
+                return const SizedBox();
+              }
               return Padding(
                 padding: const EdgeInsets.only(right: 4),
                 child: AppText(

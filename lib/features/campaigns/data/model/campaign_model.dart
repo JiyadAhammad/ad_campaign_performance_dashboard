@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entity/campaign_entity.dart';
 import '../../../../core/enums/enums.dart';
+import '../../domain/entity/campaign_entity.dart';
 
 part 'campaign_model.freezed.dart';
 part 'campaign_model.g.dart';

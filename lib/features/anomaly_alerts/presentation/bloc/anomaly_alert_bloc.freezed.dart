@@ -122,11 +122,11 @@ return getAnomalyDetect(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  getLiveMetricAlert,TResult Function()?  getAnomalyDetect,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  getLiveMetricAlert,TResult Function( bool isLoading)?  getAnomalyDetect,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _GetLiveMetricAlert() when getLiveMetricAlert != null:
 return getLiveMetricAlert();case _GetAnomalyDetect() when getAnomalyDetect != null:
-return getAnomalyDetect();case _:
+return getAnomalyDetect(_that.isLoading);case _:
   return orElse();
 
 }
@@ -144,11 +144,11 @@ return getAnomalyDetect();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  getLiveMetricAlert,required TResult Function()  getAnomalyDetect,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  getLiveMetricAlert,required TResult Function( bool isLoading)  getAnomalyDetect,}) {final _that = this;
 switch (_that) {
 case _GetLiveMetricAlert():
 return getLiveMetricAlert();case _GetAnomalyDetect():
-return getAnomalyDetect();case _:
+return getAnomalyDetect(_that.isLoading);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -165,11 +165,11 @@ return getAnomalyDetect();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  getLiveMetricAlert,TResult? Function()?  getAnomalyDetect,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  getLiveMetricAlert,TResult? Function( bool isLoading)?  getAnomalyDetect,}) {final _that = this;
 switch (_that) {
 case _GetLiveMetricAlert() when getLiveMetricAlert != null:
 return getLiveMetricAlert();case _GetAnomalyDetect() when getAnomalyDetect != null:
-return getAnomalyDetect();case _:
+return getAnomalyDetect(_that.isLoading);case _:
   return null;
 
 }
@@ -213,33 +213,67 @@ String toString() {
 
 
 class _GetAnomalyDetect implements AnomalyAlertEvent {
-  const _GetAnomalyDetect();
+  const _GetAnomalyDetect({required this.isLoading});
   
 
+ final  bool isLoading;
 
-
+/// Create a copy of AnomalyAlertEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GetAnomalyDetectCopyWith<_GetAnomalyDetect> get copyWith => __$GetAnomalyDetectCopyWithImpl<_GetAnomalyDetect>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetAnomalyDetect);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetAnomalyDetect&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,isLoading);
 
 @override
 String toString() {
-  return 'AnomalyAlertEvent.getAnomalyDetect()';
+  return 'AnomalyAlertEvent.getAnomalyDetect(isLoading: $isLoading)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class _$GetAnomalyDetectCopyWith<$Res> implements $AnomalyAlertEventCopyWith<$Res> {
+  factory _$GetAnomalyDetectCopyWith(_GetAnomalyDetect value, $Res Function(_GetAnomalyDetect) _then) = __$GetAnomalyDetectCopyWithImpl;
+@useResult
+$Res call({
+ bool isLoading
+});
 
 
+
+
+}
+/// @nodoc
+class __$GetAnomalyDetectCopyWithImpl<$Res>
+    implements _$GetAnomalyDetectCopyWith<$Res> {
+  __$GetAnomalyDetectCopyWithImpl(this._self, this._then);
+
+  final _GetAnomalyDetect _self;
+  final $Res Function(_GetAnomalyDetect) _then;
+
+/// Create a copy of AnomalyAlertEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? isLoading = null,}) {
+  return _then(_GetAnomalyDetect(
+isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$AnomalyAlertState {
