@@ -35,7 +35,7 @@ class CampaignCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 16),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: AppColors.darkCard,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: Colors.white10),
         ),

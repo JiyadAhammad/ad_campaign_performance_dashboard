@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../core/theme/colors.dart';
+import '../../../../core/theme/theme.dart';
 
 class CampaignListItemShimmer extends StatelessWidget {
   const CampaignListItemShimmer({super.key});
@@ -13,13 +13,16 @@ class CampaignListItemShimmer extends StatelessWidget {
       itemCount: 4,
       separatorBuilder: (_, __) => const SizedBox(height: 16),
       itemBuilder: (_, __) {
+        final ShimmerColors shimmerColors = Theme.of(
+          context,
+        ).extension<ShimmerColors>()!;
         return Shimmer.fromColors(
-          baseColor: Colors.white10,
-          highlightColor: Colors.white24,
+          baseColor: shimmerColors.baseColor,
+          highlightColor: shimmerColors.highlightColor,
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: AppColors.darkCard,
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(color: Colors.white10),
             ),

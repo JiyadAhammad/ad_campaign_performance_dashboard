@@ -22,7 +22,7 @@ class MetricCard extends StatelessWidget {
         width: 60,
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
-          color: AppColors.darkCard,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: Colors.white10),
         ),

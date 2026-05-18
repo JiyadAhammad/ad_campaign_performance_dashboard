@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../core/theme/colors.dart';
+import '../../../../core/theme/theme.dart';
 
 class AnomalyAlertsShimmer extends StatelessWidget {
   const AnomalyAlertsShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ShimmerColors shimmerColors = Theme.of(
+      context,
+    ).extension<ShimmerColors>()!;
     return Shimmer.fromColors(
-      baseColor: Colors.white10,
-      highlightColor: Colors.white24,
+      baseColor: shimmerColors.baseColor,
+      highlightColor: shimmerColors.highlightColor,
       child: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -22,7 +25,7 @@ class AnomalyAlertsShimmer extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColors.darkCard,
+                color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(18),
               ),
               child: Row(
@@ -114,7 +117,7 @@ class AnomalyAlertsShimmer extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColors.darkCard,
+                color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(18),
               ),
               child: Row(
@@ -183,7 +186,7 @@ class _AnomalyCardShimmer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: AppColors.darkCard,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(18),
       ),
       child: Column(
