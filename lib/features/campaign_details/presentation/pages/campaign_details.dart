@@ -29,9 +29,6 @@ class CampaignDetailScreen extends StatefulWidget {
 }
 
 class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
-  List<double> generateForecast() {
-    return <double>[4.2, 4.4, 4.6, 4.5, 4.8, 5.0, 5.2];
-  }
 
   @override
   void initState() {
@@ -138,7 +135,7 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
               ///
               ForecastChartCard(
                 history: history.history,
-                forecast: generateForecast(),
+                forecast: forecast.forecast,
               ),
 
               const SizedBox(height: 12),
