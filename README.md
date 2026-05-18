@@ -125,8 +125,6 @@ graph TD
         └── main_dev.dart   # Dart entry point dev
         └── main_prod.dart   # Dart entry point prod
 ```
-
-
 ---
 
 ## 🛠️ Technology Stack & Tooling
@@ -150,7 +148,7 @@ graph TD
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/JiyadAhammad/ad_campaign_performance_dashboard
    cd ad_campaign_performance_dashboard
    ```
 
