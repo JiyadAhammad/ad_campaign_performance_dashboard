@@ -296,7 +296,7 @@ $CampaignDetailModelCopyWith<$Res> get campaign {
 /// @nodoc
 mixin _$CampaignDetailModel {
 
- String get id; String get name; String get status; String get objective; String get channel; int get budget; int get spend; int get impressions; int get clicks; int get conversions;@JsonKey(name: 'cost_per_click') double get costPerClick;@JsonKey(name: 'cost_per_conversion') double get costPerConversion;@JsonKey(name: 'start_date') String get startDate;@JsonKey(name: 'end_date') String get endDate; String get currency;@JsonKey(name: 'target_audience') TargetAudienceModel get targetAudience;@JsonKey(name: 'daily_budget') int get dailyBudget; double get ctr;@JsonKey(name: 'budget_utilization') double get budgetUtilization;
+ String get id; String get name;@JsonKey(unknownEnumValue: CampaignStatus.unknown) CampaignStatus get status;@JsonKey(unknownEnumValue: CampaignObjective.unknown) CampaignObjective get objective;@JsonKey(unknownEnumValue: AdChannel.Social) AdChannel get channel; int get budget; int get spend; int get impressions; int get clicks; int get conversions;@JsonKey(name: 'cost_per_click') double get costPerClick;@JsonKey(name: 'cost_per_conversion') double get costPerConversion;@JsonKey(name: 'start_date') String get startDate;@JsonKey(name: 'end_date') String get endDate; String get currency;@JsonKey(name: 'target_audience') TargetAudienceModel get targetAudience;@JsonKey(name: 'daily_budget') int get dailyBudget; double get ctr;@JsonKey(name: 'budget_utilization') double get budgetUtilization;
 /// Create a copy of CampaignDetailModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -329,7 +329,7 @@ abstract mixin class $CampaignDetailModelCopyWith<$Res>  {
   factory $CampaignDetailModelCopyWith(CampaignDetailModel value, $Res Function(CampaignDetailModel) _then) = _$CampaignDetailModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String status, String objective, String channel, int budget, int spend, int impressions, int clicks, int conversions,@JsonKey(name: 'cost_per_click') double costPerClick,@JsonKey(name: 'cost_per_conversion') double costPerConversion,@JsonKey(name: 'start_date') String startDate,@JsonKey(name: 'end_date') String endDate, String currency,@JsonKey(name: 'target_audience') TargetAudienceModel targetAudience,@JsonKey(name: 'daily_budget') int dailyBudget, double ctr,@JsonKey(name: 'budget_utilization') double budgetUtilization
+ String id, String name,@JsonKey(unknownEnumValue: CampaignStatus.unknown) CampaignStatus status,@JsonKey(unknownEnumValue: CampaignObjective.unknown) CampaignObjective objective,@JsonKey(unknownEnumValue: AdChannel.Social) AdChannel channel, int budget, int spend, int impressions, int clicks, int conversions,@JsonKey(name: 'cost_per_click') double costPerClick,@JsonKey(name: 'cost_per_conversion') double costPerConversion,@JsonKey(name: 'start_date') String startDate,@JsonKey(name: 'end_date') String endDate, String currency,@JsonKey(name: 'target_audience') TargetAudienceModel targetAudience,@JsonKey(name: 'daily_budget') int dailyBudget, double ctr,@JsonKey(name: 'budget_utilization') double budgetUtilization
 });
 
 
@@ -351,9 +351,9 @@ class _$CampaignDetailModelCopyWithImpl<$Res>
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as String,objective: null == objective ? _self.objective : objective // ignore: cast_nullable_to_non_nullable
-as String,channel: null == channel ? _self.channel : channel // ignore: cast_nullable_to_non_nullable
-as String,budget: null == budget ? _self.budget : budget // ignore: cast_nullable_to_non_nullable
+as CampaignStatus,objective: null == objective ? _self.objective : objective // ignore: cast_nullable_to_non_nullable
+as CampaignObjective,channel: null == channel ? _self.channel : channel // ignore: cast_nullable_to_non_nullable
+as AdChannel,budget: null == budget ? _self.budget : budget // ignore: cast_nullable_to_non_nullable
 as int,spend: null == spend ? _self.spend : spend // ignore: cast_nullable_to_non_nullable
 as int,impressions: null == impressions ? _self.impressions : impressions // ignore: cast_nullable_to_non_nullable
 as int,clicks: null == clicks ? _self.clicks : clicks // ignore: cast_nullable_to_non_nullable
@@ -461,7 +461,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String status,  String objective,  String channel,  int budget,  int spend,  int impressions,  int clicks,  int conversions, @JsonKey(name: 'cost_per_click')  double costPerClick, @JsonKey(name: 'cost_per_conversion')  double costPerConversion, @JsonKey(name: 'start_date')  String startDate, @JsonKey(name: 'end_date')  String endDate,  String currency, @JsonKey(name: 'target_audience')  TargetAudienceModel targetAudience, @JsonKey(name: 'daily_budget')  int dailyBudget,  double ctr, @JsonKey(name: 'budget_utilization')  double budgetUtilization)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name, @JsonKey(unknownEnumValue: CampaignStatus.unknown)  CampaignStatus status, @JsonKey(unknownEnumValue: CampaignObjective.unknown)  CampaignObjective objective, @JsonKey(unknownEnumValue: AdChannel.Social)  AdChannel channel,  int budget,  int spend,  int impressions,  int clicks,  int conversions, @JsonKey(name: 'cost_per_click')  double costPerClick, @JsonKey(name: 'cost_per_conversion')  double costPerConversion, @JsonKey(name: 'start_date')  String startDate, @JsonKey(name: 'end_date')  String endDate,  String currency, @JsonKey(name: 'target_audience')  TargetAudienceModel targetAudience, @JsonKey(name: 'daily_budget')  int dailyBudget,  double ctr, @JsonKey(name: 'budget_utilization')  double budgetUtilization)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CampaignDetailModel() when $default != null:
 return $default(_that.id,_that.name,_that.status,_that.objective,_that.channel,_that.budget,_that.spend,_that.impressions,_that.clicks,_that.conversions,_that.costPerClick,_that.costPerConversion,_that.startDate,_that.endDate,_that.currency,_that.targetAudience,_that.dailyBudget,_that.ctr,_that.budgetUtilization);case _:
@@ -482,7 +482,7 @@ return $default(_that.id,_that.name,_that.status,_that.objective,_that.channel,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String status,  String objective,  String channel,  int budget,  int spend,  int impressions,  int clicks,  int conversions, @JsonKey(name: 'cost_per_click')  double costPerClick, @JsonKey(name: 'cost_per_conversion')  double costPerConversion, @JsonKey(name: 'start_date')  String startDate, @JsonKey(name: 'end_date')  String endDate,  String currency, @JsonKey(name: 'target_audience')  TargetAudienceModel targetAudience, @JsonKey(name: 'daily_budget')  int dailyBudget,  double ctr, @JsonKey(name: 'budget_utilization')  double budgetUtilization)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name, @JsonKey(unknownEnumValue: CampaignStatus.unknown)  CampaignStatus status, @JsonKey(unknownEnumValue: CampaignObjective.unknown)  CampaignObjective objective, @JsonKey(unknownEnumValue: AdChannel.Social)  AdChannel channel,  int budget,  int spend,  int impressions,  int clicks,  int conversions, @JsonKey(name: 'cost_per_click')  double costPerClick, @JsonKey(name: 'cost_per_conversion')  double costPerConversion, @JsonKey(name: 'start_date')  String startDate, @JsonKey(name: 'end_date')  String endDate,  String currency, @JsonKey(name: 'target_audience')  TargetAudienceModel targetAudience, @JsonKey(name: 'daily_budget')  int dailyBudget,  double ctr, @JsonKey(name: 'budget_utilization')  double budgetUtilization)  $default,) {final _that = this;
 switch (_that) {
 case _CampaignDetailModel():
 return $default(_that.id,_that.name,_that.status,_that.objective,_that.channel,_that.budget,_that.spend,_that.impressions,_that.clicks,_that.conversions,_that.costPerClick,_that.costPerConversion,_that.startDate,_that.endDate,_that.currency,_that.targetAudience,_that.dailyBudget,_that.ctr,_that.budgetUtilization);case _:
@@ -502,7 +502,7 @@ return $default(_that.id,_that.name,_that.status,_that.objective,_that.channel,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String status,  String objective,  String channel,  int budget,  int spend,  int impressions,  int clicks,  int conversions, @JsonKey(name: 'cost_per_click')  double costPerClick, @JsonKey(name: 'cost_per_conversion')  double costPerConversion, @JsonKey(name: 'start_date')  String startDate, @JsonKey(name: 'end_date')  String endDate,  String currency, @JsonKey(name: 'target_audience')  TargetAudienceModel targetAudience, @JsonKey(name: 'daily_budget')  int dailyBudget,  double ctr, @JsonKey(name: 'budget_utilization')  double budgetUtilization)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name, @JsonKey(unknownEnumValue: CampaignStatus.unknown)  CampaignStatus status, @JsonKey(unknownEnumValue: CampaignObjective.unknown)  CampaignObjective objective, @JsonKey(unknownEnumValue: AdChannel.Social)  AdChannel channel,  int budget,  int spend,  int impressions,  int clicks,  int conversions, @JsonKey(name: 'cost_per_click')  double costPerClick, @JsonKey(name: 'cost_per_conversion')  double costPerConversion, @JsonKey(name: 'start_date')  String startDate, @JsonKey(name: 'end_date')  String endDate,  String currency, @JsonKey(name: 'target_audience')  TargetAudienceModel targetAudience, @JsonKey(name: 'daily_budget')  int dailyBudget,  double ctr, @JsonKey(name: 'budget_utilization')  double budgetUtilization)?  $default,) {final _that = this;
 switch (_that) {
 case _CampaignDetailModel() when $default != null:
 return $default(_that.id,_that.name,_that.status,_that.objective,_that.channel,_that.budget,_that.spend,_that.impressions,_that.clicks,_that.conversions,_that.costPerClick,_that.costPerConversion,_that.startDate,_that.endDate,_that.currency,_that.targetAudience,_that.dailyBudget,_that.ctr,_that.budgetUtilization);case _:
@@ -517,14 +517,14 @@ return $default(_that.id,_that.name,_that.status,_that.objective,_that.channel,_
 @JsonSerializable()
 
 class _CampaignDetailModel implements CampaignDetailModel {
-  const _CampaignDetailModel({required this.id, required this.name, required this.status, required this.objective, required this.channel, required this.budget, required this.spend, required this.impressions, required this.clicks, required this.conversions, @JsonKey(name: 'cost_per_click') required this.costPerClick, @JsonKey(name: 'cost_per_conversion') required this.costPerConversion, @JsonKey(name: 'start_date') required this.startDate, @JsonKey(name: 'end_date') required this.endDate, required this.currency, @JsonKey(name: 'target_audience') required this.targetAudience, @JsonKey(name: 'daily_budget') required this.dailyBudget, required this.ctr, @JsonKey(name: 'budget_utilization') required this.budgetUtilization});
+  const _CampaignDetailModel({required this.id, required this.name, @JsonKey(unknownEnumValue: CampaignStatus.unknown) required this.status, @JsonKey(unknownEnumValue: CampaignObjective.unknown) required this.objective, @JsonKey(unknownEnumValue: AdChannel.Social) required this.channel, required this.budget, required this.spend, required this.impressions, required this.clicks, required this.conversions, @JsonKey(name: 'cost_per_click') required this.costPerClick, @JsonKey(name: 'cost_per_conversion') required this.costPerConversion, @JsonKey(name: 'start_date') required this.startDate, @JsonKey(name: 'end_date') required this.endDate, required this.currency, @JsonKey(name: 'target_audience') required this.targetAudience, @JsonKey(name: 'daily_budget') required this.dailyBudget, required this.ctr, @JsonKey(name: 'budget_utilization') required this.budgetUtilization});
   factory _CampaignDetailModel.fromJson(Map<String, dynamic> json) => _$CampaignDetailModelFromJson(json);
 
 @override final  String id;
 @override final  String name;
-@override final  String status;
-@override final  String objective;
-@override final  String channel;
+@override@JsonKey(unknownEnumValue: CampaignStatus.unknown) final  CampaignStatus status;
+@override@JsonKey(unknownEnumValue: CampaignObjective.unknown) final  CampaignObjective objective;
+@override@JsonKey(unknownEnumValue: AdChannel.Social) final  AdChannel channel;
 @override final  int budget;
 @override final  int spend;
 @override final  int impressions;
@@ -573,7 +573,7 @@ abstract mixin class _$CampaignDetailModelCopyWith<$Res> implements $CampaignDet
   factory _$CampaignDetailModelCopyWith(_CampaignDetailModel value, $Res Function(_CampaignDetailModel) _then) = __$CampaignDetailModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String status, String objective, String channel, int budget, int spend, int impressions, int clicks, int conversions,@JsonKey(name: 'cost_per_click') double costPerClick,@JsonKey(name: 'cost_per_conversion') double costPerConversion,@JsonKey(name: 'start_date') String startDate,@JsonKey(name: 'end_date') String endDate, String currency,@JsonKey(name: 'target_audience') TargetAudienceModel targetAudience,@JsonKey(name: 'daily_budget') int dailyBudget, double ctr,@JsonKey(name: 'budget_utilization') double budgetUtilization
+ String id, String name,@JsonKey(unknownEnumValue: CampaignStatus.unknown) CampaignStatus status,@JsonKey(unknownEnumValue: CampaignObjective.unknown) CampaignObjective objective,@JsonKey(unknownEnumValue: AdChannel.Social) AdChannel channel, int budget, int spend, int impressions, int clicks, int conversions,@JsonKey(name: 'cost_per_click') double costPerClick,@JsonKey(name: 'cost_per_conversion') double costPerConversion,@JsonKey(name: 'start_date') String startDate,@JsonKey(name: 'end_date') String endDate, String currency,@JsonKey(name: 'target_audience') TargetAudienceModel targetAudience,@JsonKey(name: 'daily_budget') int dailyBudget, double ctr,@JsonKey(name: 'budget_utilization') double budgetUtilization
 });
 
 
@@ -595,9 +595,9 @@ class __$CampaignDetailModelCopyWithImpl<$Res>
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as String,objective: null == objective ? _self.objective : objective // ignore: cast_nullable_to_non_nullable
-as String,channel: null == channel ? _self.channel : channel // ignore: cast_nullable_to_non_nullable
-as String,budget: null == budget ? _self.budget : budget // ignore: cast_nullable_to_non_nullable
+as CampaignStatus,objective: null == objective ? _self.objective : objective // ignore: cast_nullable_to_non_nullable
+as CampaignObjective,channel: null == channel ? _self.channel : channel // ignore: cast_nullable_to_non_nullable
+as AdChannel,budget: null == budget ? _self.budget : budget // ignore: cast_nullable_to_non_nullable
 as int,spend: null == spend ? _self.spend : spend // ignore: cast_nullable_to_non_nullable
 as int,impressions: null == impressions ? _self.impressions : impressions // ignore: cast_nullable_to_non_nullable
 as int,clicks: null == clicks ? _self.clicks : clicks // ignore: cast_nullable_to_non_nullable

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/entity/campaign_details_entity.dart';
+import '../../../../../core/enums/enums.dart';
 
 part 'campaign_details_model.freezed.dart';
 part 'campaign_details_model.g.dart';
@@ -26,9 +27,11 @@ abstract class CampaignDetailModel with _$CampaignDetailModel {
   const factory CampaignDetailModel({
     required String id,
     required String name,
-    required String status,
-    required String objective,
-    required String channel,
+    @JsonKey(unknownEnumValue: CampaignStatus.unknown)
+    required CampaignStatus status,
+    @JsonKey(unknownEnumValue: CampaignObjective.unknown)
+    required CampaignObjective objective,
+    @JsonKey(unknownEnumValue: AdChannel.Social) required AdChannel channel,
     required int budget,
     required int spend,
     required int impressions,

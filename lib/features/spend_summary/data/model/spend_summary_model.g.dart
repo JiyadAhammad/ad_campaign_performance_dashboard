@@ -48,7 +48,11 @@ Map<String, dynamic> _$CampaignAnalyticsSummaryModelToJson(
 _ChannelAnalyticsModel _$ChannelAnalyticsModelFromJson(
   Map<String, dynamic> json,
 ) => _ChannelAnalyticsModel(
-  channel: json['channel'] as String,
+  channel: $enumDecode(
+    _$AdChannelEnumMap,
+    json['channel'],
+    unknownValue: AdChannel.Social,
+  ),
   spend: intFromJson(json['spend']),
   impressions: intFromJson(json['impressions']),
   clicks: intFromJson(json['clicks']),
@@ -57,10 +61,17 @@ _ChannelAnalyticsModel _$ChannelAnalyticsModelFromJson(
 Map<String, dynamic> _$ChannelAnalyticsModelToJson(
   _ChannelAnalyticsModel instance,
 ) => <String, dynamic>{
-  'channel': instance.channel,
+  'channel': _$AdChannelEnumMap[instance.channel]!,
   'spend': instance.spend,
   'impressions': instance.impressions,
   'clicks': instance.clicks,
+};
+
+const _$AdChannelEnumMap = {
+  AdChannel.Social: 'Social',
+  AdChannel.Search: 'Search',
+  AdChannel.Display: 'Display',
+  AdChannel.unknown: 'unknown',
 };
 
 _TopCampaignModel _$TopCampaignModelFromJson(Map<String, dynamic> json) =>

@@ -589,7 +589,7 @@ as double,
 /// @nodoc
 mixin _$ForecastRecommendationModel {
 
- String get trend;@JsonKey(name: 'change_percent') double get changePercent; String get message;@JsonKey(name: 'suggested_daily_budget') int get suggestedDailyBudget;
+@JsonKey(unknownEnumValue: ForecastTrend.unknown) ForecastTrend get trend;@JsonKey(name: 'change_percent') double get changePercent; String get message;@JsonKey(name: 'suggested_daily_budget') int get suggestedDailyBudget;
 /// Create a copy of ForecastRecommendationModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -622,7 +622,7 @@ abstract mixin class $ForecastRecommendationModelCopyWith<$Res>  {
   factory $ForecastRecommendationModelCopyWith(ForecastRecommendationModel value, $Res Function(ForecastRecommendationModel) _then) = _$ForecastRecommendationModelCopyWithImpl;
 @useResult
 $Res call({
- String trend,@JsonKey(name: 'change_percent') double changePercent, String message,@JsonKey(name: 'suggested_daily_budget') int suggestedDailyBudget
+@JsonKey(unknownEnumValue: ForecastTrend.unknown) ForecastTrend trend,@JsonKey(name: 'change_percent') double changePercent, String message,@JsonKey(name: 'suggested_daily_budget') int suggestedDailyBudget
 });
 
 
@@ -642,7 +642,7 @@ class _$ForecastRecommendationModelCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? trend = null,Object? changePercent = null,Object? message = null,Object? suggestedDailyBudget = null,}) {
   return _then(_self.copyWith(
 trend: null == trend ? _self.trend : trend // ignore: cast_nullable_to_non_nullable
-as String,changePercent: null == changePercent ? _self.changePercent : changePercent // ignore: cast_nullable_to_non_nullable
+as ForecastTrend,changePercent: null == changePercent ? _self.changePercent : changePercent // ignore: cast_nullable_to_non_nullable
 as double,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,suggestedDailyBudget: null == suggestedDailyBudget ? _self.suggestedDailyBudget : suggestedDailyBudget // ignore: cast_nullable_to_non_nullable
 as int,
@@ -730,7 +730,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String trend, @JsonKey(name: 'change_percent')  double changePercent,  String message, @JsonKey(name: 'suggested_daily_budget')  int suggestedDailyBudget)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: ForecastTrend.unknown)  ForecastTrend trend, @JsonKey(name: 'change_percent')  double changePercent,  String message, @JsonKey(name: 'suggested_daily_budget')  int suggestedDailyBudget)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ForecastRecommendationModel() when $default != null:
 return $default(_that.trend,_that.changePercent,_that.message,_that.suggestedDailyBudget);case _:
@@ -751,7 +751,7 @@ return $default(_that.trend,_that.changePercent,_that.message,_that.suggestedDai
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String trend, @JsonKey(name: 'change_percent')  double changePercent,  String message, @JsonKey(name: 'suggested_daily_budget')  int suggestedDailyBudget)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: ForecastTrend.unknown)  ForecastTrend trend, @JsonKey(name: 'change_percent')  double changePercent,  String message, @JsonKey(name: 'suggested_daily_budget')  int suggestedDailyBudget)  $default,) {final _that = this;
 switch (_that) {
 case _ForecastRecommendationModel():
 return $default(_that.trend,_that.changePercent,_that.message,_that.suggestedDailyBudget);case _:
@@ -771,7 +771,7 @@ return $default(_that.trend,_that.changePercent,_that.message,_that.suggestedDai
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String trend, @JsonKey(name: 'change_percent')  double changePercent,  String message, @JsonKey(name: 'suggested_daily_budget')  int suggestedDailyBudget)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: ForecastTrend.unknown)  ForecastTrend trend, @JsonKey(name: 'change_percent')  double changePercent,  String message, @JsonKey(name: 'suggested_daily_budget')  int suggestedDailyBudget)?  $default,) {final _that = this;
 switch (_that) {
 case _ForecastRecommendationModel() when $default != null:
 return $default(_that.trend,_that.changePercent,_that.message,_that.suggestedDailyBudget);case _:
@@ -786,10 +786,10 @@ return $default(_that.trend,_that.changePercent,_that.message,_that.suggestedDai
 @JsonSerializable()
 
 class _ForecastRecommendationModel implements ForecastRecommendationModel {
-  const _ForecastRecommendationModel({required this.trend, @JsonKey(name: 'change_percent') required this.changePercent, required this.message, @JsonKey(name: 'suggested_daily_budget') required this.suggestedDailyBudget});
+  const _ForecastRecommendationModel({@JsonKey(unknownEnumValue: ForecastTrend.unknown) required this.trend, @JsonKey(name: 'change_percent') required this.changePercent, required this.message, @JsonKey(name: 'suggested_daily_budget') required this.suggestedDailyBudget});
   factory _ForecastRecommendationModel.fromJson(Map<String, dynamic> json) => _$ForecastRecommendationModelFromJson(json);
 
-@override final  String trend;
+@override@JsonKey(unknownEnumValue: ForecastTrend.unknown) final  ForecastTrend trend;
 @override@JsonKey(name: 'change_percent') final  double changePercent;
 @override final  String message;
 @override@JsonKey(name: 'suggested_daily_budget') final  int suggestedDailyBudget;
@@ -827,7 +827,7 @@ abstract mixin class _$ForecastRecommendationModelCopyWith<$Res> implements $For
   factory _$ForecastRecommendationModelCopyWith(_ForecastRecommendationModel value, $Res Function(_ForecastRecommendationModel) _then) = __$ForecastRecommendationModelCopyWithImpl;
 @override @useResult
 $Res call({
- String trend,@JsonKey(name: 'change_percent') double changePercent, String message,@JsonKey(name: 'suggested_daily_budget') int suggestedDailyBudget
+@JsonKey(unknownEnumValue: ForecastTrend.unknown) ForecastTrend trend,@JsonKey(name: 'change_percent') double changePercent, String message,@JsonKey(name: 'suggested_daily_budget') int suggestedDailyBudget
 });
 
 
@@ -847,7 +847,7 @@ class __$ForecastRecommendationModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? trend = null,Object? changePercent = null,Object? message = null,Object? suggestedDailyBudget = null,}) {
   return _then(_ForecastRecommendationModel(
 trend: null == trend ? _self.trend : trend // ignore: cast_nullable_to_non_nullable
-as String,changePercent: null == changePercent ? _self.changePercent : changePercent // ignore: cast_nullable_to_non_nullable
+as ForecastTrend,changePercent: null == changePercent ? _self.changePercent : changePercent // ignore: cast_nullable_to_non_nullable
 as double,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,suggestedDailyBudget: null == suggestedDailyBudget ? _self.suggestedDailyBudget : suggestedDailyBudget // ignore: cast_nullable_to_non_nullable
 as int,

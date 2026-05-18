@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import '../../../../core/enums/enums.dart';
 
 class AnomalyDetectResponseEntity extends Equatable {
   const AnomalyDetectResponseEntity({
@@ -34,8 +35,8 @@ class AnomalyEntity extends Equatable {
   final String campaignId;
   final String campaignName;
   final String detectedAt;
-  final String type;
-  final String severity;
+  final AnomalyType type;
+  final AnomalySeverity severity;
   final String metric;
   final double actualValue;
   final double expectedValue;
@@ -57,13 +58,13 @@ class AnomalyEntity extends Equatable {
     message,
   ];
 
-  bool get isSpendSpike => type == 'spend_spike';
+  
 
-  bool get isCtrDrop => type == 'ctr_drop';
+  
 
-  bool get isHighSeverity => severity == 'high';
+  
 
-  bool get isMediumSeverity => severity == 'medium';
+  
 
   double get absoluteDeviation => deviationPercent.abs();
 }

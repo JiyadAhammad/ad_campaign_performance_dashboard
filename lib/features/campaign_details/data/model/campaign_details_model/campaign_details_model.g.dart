@@ -22,9 +22,21 @@ _CampaignDetailModel _$CampaignDetailModelFromJson(Map<String, dynamic> json) =>
     _CampaignDetailModel(
       id: json['id'] as String,
       name: json['name'] as String,
-      status: json['status'] as String,
-      objective: json['objective'] as String,
-      channel: json['channel'] as String,
+      status: $enumDecode(
+        _$CampaignStatusEnumMap,
+        json['status'],
+        unknownValue: CampaignStatus.unknown,
+      ),
+      objective: $enumDecode(
+        _$CampaignObjectiveEnumMap,
+        json['objective'],
+        unknownValue: CampaignObjective.unknown,
+      ),
+      channel: $enumDecode(
+        _$AdChannelEnumMap,
+        json['channel'],
+        unknownValue: AdChannel.Social,
+      ),
       budget: (json['budget'] as num).toInt(),
       spend: (json['spend'] as num).toInt(),
       impressions: (json['impressions'] as num).toInt(),
@@ -48,9 +60,9 @@ Map<String, dynamic> _$CampaignDetailModelToJson(
 ) => <String, dynamic>{
   'id': instance.id,
   'name': instance.name,
-  'status': instance.status,
-  'objective': instance.objective,
-  'channel': instance.channel,
+  'status': _$CampaignStatusEnumMap[instance.status]!,
+  'objective': _$CampaignObjectiveEnumMap[instance.objective]!,
+  'channel': _$AdChannelEnumMap[instance.channel]!,
   'budget': instance.budget,
   'spend': instance.spend,
   'impressions': instance.impressions,
@@ -65,6 +77,28 @@ Map<String, dynamic> _$CampaignDetailModelToJson(
   'daily_budget': instance.dailyBudget,
   'ctr': instance.ctr,
   'budget_utilization': instance.budgetUtilization,
+};
+
+const _$CampaignStatusEnumMap = {
+  CampaignStatus.Active: 'Active',
+  CampaignStatus.Paused: 'Paused',
+  CampaignStatus.Ended: 'Ended',
+  CampaignStatus.unknown: 'unknown',
+};
+
+const _$CampaignObjectiveEnumMap = {
+  CampaignObjective.Awareness: 'Awareness',
+  CampaignObjective.Conversion: 'Conversion',
+  CampaignObjective.Traffic: 'Traffic',
+  CampaignObjective.Engagement: 'Engagement',
+  CampaignObjective.unknown: 'unknown',
+};
+
+const _$AdChannelEnumMap = {
+  AdChannel.Social: 'Social',
+  AdChannel.Search: 'Search',
+  AdChannel.Display: 'Display',
+  AdChannel.unknown: 'unknown',
 };
 
 _TargetAudienceModel _$TargetAudienceModelFromJson(Map<String, dynamic> json) =>

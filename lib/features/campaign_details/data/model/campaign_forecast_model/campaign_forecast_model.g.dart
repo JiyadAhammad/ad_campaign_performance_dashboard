@@ -53,7 +53,11 @@ Map<String, dynamic> _$CampaignForecastModelToJson(
 _ForecastRecommendationModel _$ForecastRecommendationModelFromJson(
   Map<String, dynamic> json,
 ) => _ForecastRecommendationModel(
-  trend: json['trend'] as String,
+  trend: $enumDecode(
+    _$ForecastTrendEnumMap,
+    json['trend'],
+    unknownValue: ForecastTrend.unknown,
+  ),
   changePercent: (json['change_percent'] as num).toDouble(),
   message: json['message'] as String,
   suggestedDailyBudget: (json['suggested_daily_budget'] as num).toInt(),
@@ -62,8 +66,15 @@ _ForecastRecommendationModel _$ForecastRecommendationModelFromJson(
 Map<String, dynamic> _$ForecastRecommendationModelToJson(
   _ForecastRecommendationModel instance,
 ) => <String, dynamic>{
-  'trend': instance.trend,
+  'trend': _$ForecastTrendEnumMap[instance.trend]!,
   'change_percent': instance.changePercent,
   'message': instance.message,
   'suggested_daily_budget': instance.suggestedDailyBudget,
+};
+
+const _$ForecastTrendEnumMap = {
+  ForecastTrend.upward: 'upward',
+  ForecastTrend.downward: 'downward',
+  ForecastTrend.stable: 'stable',
+  ForecastTrend.unknown: 'unknown',
 };

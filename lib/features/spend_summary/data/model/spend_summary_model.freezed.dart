@@ -589,7 +589,7 @@ as List<TopCampaignModel>,
 /// @nodoc
 mixin _$ChannelAnalyticsModel {
 
- String get channel;@JsonKey(fromJson: intFromJson) int get spend;@JsonKey(fromJson: intFromJson) int get impressions;@JsonKey(fromJson: intFromJson) int get clicks;
+@JsonKey(unknownEnumValue: AdChannel.Social) AdChannel get channel;@JsonKey(fromJson: intFromJson) int get spend;@JsonKey(fromJson: intFromJson) int get impressions;@JsonKey(fromJson: intFromJson) int get clicks;
 /// Create a copy of ChannelAnalyticsModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -622,7 +622,7 @@ abstract mixin class $ChannelAnalyticsModelCopyWith<$Res>  {
   factory $ChannelAnalyticsModelCopyWith(ChannelAnalyticsModel value, $Res Function(ChannelAnalyticsModel) _then) = _$ChannelAnalyticsModelCopyWithImpl;
 @useResult
 $Res call({
- String channel,@JsonKey(fromJson: intFromJson) int spend,@JsonKey(fromJson: intFromJson) int impressions,@JsonKey(fromJson: intFromJson) int clicks
+@JsonKey(unknownEnumValue: AdChannel.Social) AdChannel channel,@JsonKey(fromJson: intFromJson) int spend,@JsonKey(fromJson: intFromJson) int impressions,@JsonKey(fromJson: intFromJson) int clicks
 });
 
 
@@ -642,7 +642,7 @@ class _$ChannelAnalyticsModelCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? channel = null,Object? spend = null,Object? impressions = null,Object? clicks = null,}) {
   return _then(_self.copyWith(
 channel: null == channel ? _self.channel : channel // ignore: cast_nullable_to_non_nullable
-as String,spend: null == spend ? _self.spend : spend // ignore: cast_nullable_to_non_nullable
+as AdChannel,spend: null == spend ? _self.spend : spend // ignore: cast_nullable_to_non_nullable
 as int,impressions: null == impressions ? _self.impressions : impressions // ignore: cast_nullable_to_non_nullable
 as int,clicks: null == clicks ? _self.clicks : clicks // ignore: cast_nullable_to_non_nullable
 as int,
@@ -730,7 +730,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String channel, @JsonKey(fromJson: intFromJson)  int spend, @JsonKey(fromJson: intFromJson)  int impressions, @JsonKey(fromJson: intFromJson)  int clicks)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: AdChannel.Social)  AdChannel channel, @JsonKey(fromJson: intFromJson)  int spend, @JsonKey(fromJson: intFromJson)  int impressions, @JsonKey(fromJson: intFromJson)  int clicks)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChannelAnalyticsModel() when $default != null:
 return $default(_that.channel,_that.spend,_that.impressions,_that.clicks);case _:
@@ -751,7 +751,7 @@ return $default(_that.channel,_that.spend,_that.impressions,_that.clicks);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String channel, @JsonKey(fromJson: intFromJson)  int spend, @JsonKey(fromJson: intFromJson)  int impressions, @JsonKey(fromJson: intFromJson)  int clicks)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: AdChannel.Social)  AdChannel channel, @JsonKey(fromJson: intFromJson)  int spend, @JsonKey(fromJson: intFromJson)  int impressions, @JsonKey(fromJson: intFromJson)  int clicks)  $default,) {final _that = this;
 switch (_that) {
 case _ChannelAnalyticsModel():
 return $default(_that.channel,_that.spend,_that.impressions,_that.clicks);case _:
@@ -771,7 +771,7 @@ return $default(_that.channel,_that.spend,_that.impressions,_that.clicks);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String channel, @JsonKey(fromJson: intFromJson)  int spend, @JsonKey(fromJson: intFromJson)  int impressions, @JsonKey(fromJson: intFromJson)  int clicks)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: AdChannel.Social)  AdChannel channel, @JsonKey(fromJson: intFromJson)  int spend, @JsonKey(fromJson: intFromJson)  int impressions, @JsonKey(fromJson: intFromJson)  int clicks)?  $default,) {final _that = this;
 switch (_that) {
 case _ChannelAnalyticsModel() when $default != null:
 return $default(_that.channel,_that.spend,_that.impressions,_that.clicks);case _:
@@ -786,10 +786,10 @@ return $default(_that.channel,_that.spend,_that.impressions,_that.clicks);case _
 @JsonSerializable()
 
 class _ChannelAnalyticsModel implements ChannelAnalyticsModel {
-  const _ChannelAnalyticsModel({required this.channel, @JsonKey(fromJson: intFromJson) required this.spend, @JsonKey(fromJson: intFromJson) required this.impressions, @JsonKey(fromJson: intFromJson) required this.clicks});
+  const _ChannelAnalyticsModel({@JsonKey(unknownEnumValue: AdChannel.Social) required this.channel, @JsonKey(fromJson: intFromJson) required this.spend, @JsonKey(fromJson: intFromJson) required this.impressions, @JsonKey(fromJson: intFromJson) required this.clicks});
   factory _ChannelAnalyticsModel.fromJson(Map<String, dynamic> json) => _$ChannelAnalyticsModelFromJson(json);
 
-@override final  String channel;
+@override@JsonKey(unknownEnumValue: AdChannel.Social) final  AdChannel channel;
 @override@JsonKey(fromJson: intFromJson) final  int spend;
 @override@JsonKey(fromJson: intFromJson) final  int impressions;
 @override@JsonKey(fromJson: intFromJson) final  int clicks;
@@ -827,7 +827,7 @@ abstract mixin class _$ChannelAnalyticsModelCopyWith<$Res> implements $ChannelAn
   factory _$ChannelAnalyticsModelCopyWith(_ChannelAnalyticsModel value, $Res Function(_ChannelAnalyticsModel) _then) = __$ChannelAnalyticsModelCopyWithImpl;
 @override @useResult
 $Res call({
- String channel,@JsonKey(fromJson: intFromJson) int spend,@JsonKey(fromJson: intFromJson) int impressions,@JsonKey(fromJson: intFromJson) int clicks
+@JsonKey(unknownEnumValue: AdChannel.Social) AdChannel channel,@JsonKey(fromJson: intFromJson) int spend,@JsonKey(fromJson: intFromJson) int impressions,@JsonKey(fromJson: intFromJson) int clicks
 });
 
 
@@ -847,7 +847,7 @@ class __$ChannelAnalyticsModelCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? channel = null,Object? spend = null,Object? impressions = null,Object? clicks = null,}) {
   return _then(_ChannelAnalyticsModel(
 channel: null == channel ? _self.channel : channel // ignore: cast_nullable_to_non_nullable
-as String,spend: null == spend ? _self.spend : spend // ignore: cast_nullable_to_non_nullable
+as AdChannel,spend: null == spend ? _self.spend : spend // ignore: cast_nullable_to_non_nullable
 as int,impressions: null == impressions ? _self.impressions : impressions // ignore: cast_nullable_to_non_nullable
 as int,clicks: null == clicks ? _self.clicks : clicks // ignore: cast_nullable_to_non_nullable
 as int,

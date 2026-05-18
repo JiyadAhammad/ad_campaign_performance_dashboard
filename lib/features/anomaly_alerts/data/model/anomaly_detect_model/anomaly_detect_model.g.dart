@@ -30,8 +30,16 @@ _AnomalyModel _$AnomalyModelFromJson(Map<String, dynamic> json) =>
       campaignId: json['campaign_id'] as String,
       campaignName: json['campaign_name'] as String,
       detectedAt: json['detected_at'] as String,
-      type: json['type'] as String,
-      severity: json['severity'] as String,
+      type: $enumDecode(
+        _$AnomalyTypeEnumMap,
+        json['type'],
+        unknownValue: AnomalyType.unknown,
+      ),
+      severity: $enumDecode(
+        _$AnomalySeverityEnumMap,
+        json['severity'],
+        unknownValue: AnomalySeverity.unknown,
+      ),
       metric: json['metric'] as String,
       actualValue: _doubleFromJson(json['actual_value']),
       expectedValue: _doubleFromJson(json['expected_value']),
@@ -45,11 +53,25 @@ Map<String, dynamic> _$AnomalyModelToJson(_AnomalyModel instance) =>
       'campaign_id': instance.campaignId,
       'campaign_name': instance.campaignName,
       'detected_at': instance.detectedAt,
-      'type': instance.type,
-      'severity': instance.severity,
+      'type': _$AnomalyTypeEnumMap[instance.type]!,
+      'severity': _$AnomalySeverityEnumMap[instance.severity]!,
       'metric': instance.metric,
       'actual_value': instance.actualValue,
       'expected_value': instance.expectedValue,
       'deviation_percent': instance.deviationPercent,
       'message': instance.message,
     };
+
+const _$AnomalyTypeEnumMap = {
+  AnomalyType.SpendSpike: 'spend_spike',
+  AnomalyType.CtrDrop: 'ctr_drop',
+  AnomalyType.CpaIncrease: 'cpa_increase',
+  AnomalyType.unknown: 'unknown',
+};
+
+const _$AnomalySeverityEnumMap = {
+  AnomalySeverity.low: 'low',
+  AnomalySeverity.medium: 'medium',
+  AnomalySeverity.high: 'high',
+  AnomalySeverity.unknown: 'unknown',
+};

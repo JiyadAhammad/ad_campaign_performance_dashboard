@@ -290,7 +290,7 @@ as List<AnomalyModel>,
 /// @nodoc
 mixin _$AnomalyModel {
 
- String get id;@JsonKey(name: 'campaign_id') String get campaignId;@JsonKey(name: 'campaign_name') String get campaignName;@JsonKey(name: 'detected_at') String get detectedAt; String get type; String get severity; String get metric;@JsonKey(name: 'actual_value', fromJson: _doubleFromJson) double get actualValue;@JsonKey(name: 'expected_value', fromJson: _doubleFromJson) double get expectedValue;@JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson) double get deviationPercent; String get message;
+ String get id;@JsonKey(name: 'campaign_id') String get campaignId;@JsonKey(name: 'campaign_name') String get campaignName;@JsonKey(name: 'detected_at') String get detectedAt;@JsonKey(unknownEnumValue: AnomalyType.unknown) AnomalyType get type;@JsonKey(unknownEnumValue: AnomalySeverity.unknown) AnomalySeverity get severity; String get metric;@JsonKey(name: 'actual_value', fromJson: _doubleFromJson) double get actualValue;@JsonKey(name: 'expected_value', fromJson: _doubleFromJson) double get expectedValue;@JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson) double get deviationPercent; String get message;
 /// Create a copy of AnomalyModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -323,7 +323,7 @@ abstract mixin class $AnomalyModelCopyWith<$Res>  {
   factory $AnomalyModelCopyWith(AnomalyModel value, $Res Function(AnomalyModel) _then) = _$AnomalyModelCopyWithImpl;
 @useResult
 $Res call({
- String id,@JsonKey(name: 'campaign_id') String campaignId,@JsonKey(name: 'campaign_name') String campaignName,@JsonKey(name: 'detected_at') String detectedAt, String type, String severity, String metric,@JsonKey(name: 'actual_value', fromJson: _doubleFromJson) double actualValue,@JsonKey(name: 'expected_value', fromJson: _doubleFromJson) double expectedValue,@JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson) double deviationPercent, String message
+ String id,@JsonKey(name: 'campaign_id') String campaignId,@JsonKey(name: 'campaign_name') String campaignName,@JsonKey(name: 'detected_at') String detectedAt,@JsonKey(unknownEnumValue: AnomalyType.unknown) AnomalyType type,@JsonKey(unknownEnumValue: AnomalySeverity.unknown) AnomalySeverity severity, String metric,@JsonKey(name: 'actual_value', fromJson: _doubleFromJson) double actualValue,@JsonKey(name: 'expected_value', fromJson: _doubleFromJson) double expectedValue,@JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson) double deviationPercent, String message
 });
 
 
@@ -347,8 +347,8 @@ as String,campaignId: null == campaignId ? _self.campaignId : campaignId // igno
 as String,campaignName: null == campaignName ? _self.campaignName : campaignName // ignore: cast_nullable_to_non_nullable
 as String,detectedAt: null == detectedAt ? _self.detectedAt : detectedAt // ignore: cast_nullable_to_non_nullable
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String,severity: null == severity ? _self.severity : severity // ignore: cast_nullable_to_non_nullable
-as String,metric: null == metric ? _self.metric : metric // ignore: cast_nullable_to_non_nullable
+as AnomalyType,severity: null == severity ? _self.severity : severity // ignore: cast_nullable_to_non_nullable
+as AnomalySeverity,metric: null == metric ? _self.metric : metric // ignore: cast_nullable_to_non_nullable
 as String,actualValue: null == actualValue ? _self.actualValue : actualValue // ignore: cast_nullable_to_non_nullable
 as double,expectedValue: null == expectedValue ? _self.expectedValue : expectedValue // ignore: cast_nullable_to_non_nullable
 as double,deviationPercent: null == deviationPercent ? _self.deviationPercent : deviationPercent // ignore: cast_nullable_to_non_nullable
@@ -438,7 +438,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @JsonKey(name: 'campaign_id')  String campaignId, @JsonKey(name: 'campaign_name')  String campaignName, @JsonKey(name: 'detected_at')  String detectedAt,  String type,  String severity,  String metric, @JsonKey(name: 'actual_value', fromJson: _doubleFromJson)  double actualValue, @JsonKey(name: 'expected_value', fromJson: _doubleFromJson)  double expectedValue, @JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson)  double deviationPercent,  String message)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @JsonKey(name: 'campaign_id')  String campaignId, @JsonKey(name: 'campaign_name')  String campaignName, @JsonKey(name: 'detected_at')  String detectedAt, @JsonKey(unknownEnumValue: AnomalyType.unknown)  AnomalyType type, @JsonKey(unknownEnumValue: AnomalySeverity.unknown)  AnomalySeverity severity,  String metric, @JsonKey(name: 'actual_value', fromJson: _doubleFromJson)  double actualValue, @JsonKey(name: 'expected_value', fromJson: _doubleFromJson)  double expectedValue, @JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson)  double deviationPercent,  String message)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AnomalyModel() when $default != null:
 return $default(_that.id,_that.campaignId,_that.campaignName,_that.detectedAt,_that.type,_that.severity,_that.metric,_that.actualValue,_that.expectedValue,_that.deviationPercent,_that.message);case _:
@@ -459,7 +459,7 @@ return $default(_that.id,_that.campaignId,_that.campaignName,_that.detectedAt,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @JsonKey(name: 'campaign_id')  String campaignId, @JsonKey(name: 'campaign_name')  String campaignName, @JsonKey(name: 'detected_at')  String detectedAt,  String type,  String severity,  String metric, @JsonKey(name: 'actual_value', fromJson: _doubleFromJson)  double actualValue, @JsonKey(name: 'expected_value', fromJson: _doubleFromJson)  double expectedValue, @JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson)  double deviationPercent,  String message)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @JsonKey(name: 'campaign_id')  String campaignId, @JsonKey(name: 'campaign_name')  String campaignName, @JsonKey(name: 'detected_at')  String detectedAt, @JsonKey(unknownEnumValue: AnomalyType.unknown)  AnomalyType type, @JsonKey(unknownEnumValue: AnomalySeverity.unknown)  AnomalySeverity severity,  String metric, @JsonKey(name: 'actual_value', fromJson: _doubleFromJson)  double actualValue, @JsonKey(name: 'expected_value', fromJson: _doubleFromJson)  double expectedValue, @JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson)  double deviationPercent,  String message)  $default,) {final _that = this;
 switch (_that) {
 case _AnomalyModel():
 return $default(_that.id,_that.campaignId,_that.campaignName,_that.detectedAt,_that.type,_that.severity,_that.metric,_that.actualValue,_that.expectedValue,_that.deviationPercent,_that.message);case _:
@@ -479,7 +479,7 @@ return $default(_that.id,_that.campaignId,_that.campaignName,_that.detectedAt,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @JsonKey(name: 'campaign_id')  String campaignId, @JsonKey(name: 'campaign_name')  String campaignName, @JsonKey(name: 'detected_at')  String detectedAt,  String type,  String severity,  String metric, @JsonKey(name: 'actual_value', fromJson: _doubleFromJson)  double actualValue, @JsonKey(name: 'expected_value', fromJson: _doubleFromJson)  double expectedValue, @JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson)  double deviationPercent,  String message)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @JsonKey(name: 'campaign_id')  String campaignId, @JsonKey(name: 'campaign_name')  String campaignName, @JsonKey(name: 'detected_at')  String detectedAt, @JsonKey(unknownEnumValue: AnomalyType.unknown)  AnomalyType type, @JsonKey(unknownEnumValue: AnomalySeverity.unknown)  AnomalySeverity severity,  String metric, @JsonKey(name: 'actual_value', fromJson: _doubleFromJson)  double actualValue, @JsonKey(name: 'expected_value', fromJson: _doubleFromJson)  double expectedValue, @JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson)  double deviationPercent,  String message)?  $default,) {final _that = this;
 switch (_that) {
 case _AnomalyModel() when $default != null:
 return $default(_that.id,_that.campaignId,_that.campaignName,_that.detectedAt,_that.type,_that.severity,_that.metric,_that.actualValue,_that.expectedValue,_that.deviationPercent,_that.message);case _:
@@ -494,15 +494,15 @@ return $default(_that.id,_that.campaignId,_that.campaignName,_that.detectedAt,_t
 @JsonSerializable()
 
 class _AnomalyModel implements AnomalyModel {
-  const _AnomalyModel({required this.id, @JsonKey(name: 'campaign_id') required this.campaignId, @JsonKey(name: 'campaign_name') required this.campaignName, @JsonKey(name: 'detected_at') required this.detectedAt, required this.type, required this.severity, required this.metric, @JsonKey(name: 'actual_value', fromJson: _doubleFromJson) required this.actualValue, @JsonKey(name: 'expected_value', fromJson: _doubleFromJson) required this.expectedValue, @JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson) required this.deviationPercent, required this.message});
+  const _AnomalyModel({required this.id, @JsonKey(name: 'campaign_id') required this.campaignId, @JsonKey(name: 'campaign_name') required this.campaignName, @JsonKey(name: 'detected_at') required this.detectedAt, @JsonKey(unknownEnumValue: AnomalyType.unknown) required this.type, @JsonKey(unknownEnumValue: AnomalySeverity.unknown) required this.severity, required this.metric, @JsonKey(name: 'actual_value', fromJson: _doubleFromJson) required this.actualValue, @JsonKey(name: 'expected_value', fromJson: _doubleFromJson) required this.expectedValue, @JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson) required this.deviationPercent, required this.message});
   factory _AnomalyModel.fromJson(Map<String, dynamic> json) => _$AnomalyModelFromJson(json);
 
 @override final  String id;
 @override@JsonKey(name: 'campaign_id') final  String campaignId;
 @override@JsonKey(name: 'campaign_name') final  String campaignName;
 @override@JsonKey(name: 'detected_at') final  String detectedAt;
-@override final  String type;
-@override final  String severity;
+@override@JsonKey(unknownEnumValue: AnomalyType.unknown) final  AnomalyType type;
+@override@JsonKey(unknownEnumValue: AnomalySeverity.unknown) final  AnomalySeverity severity;
 @override final  String metric;
 @override@JsonKey(name: 'actual_value', fromJson: _doubleFromJson) final  double actualValue;
 @override@JsonKey(name: 'expected_value', fromJson: _doubleFromJson) final  double expectedValue;
@@ -542,7 +542,7 @@ abstract mixin class _$AnomalyModelCopyWith<$Res> implements $AnomalyModelCopyWi
   factory _$AnomalyModelCopyWith(_AnomalyModel value, $Res Function(_AnomalyModel) _then) = __$AnomalyModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id,@JsonKey(name: 'campaign_id') String campaignId,@JsonKey(name: 'campaign_name') String campaignName,@JsonKey(name: 'detected_at') String detectedAt, String type, String severity, String metric,@JsonKey(name: 'actual_value', fromJson: _doubleFromJson) double actualValue,@JsonKey(name: 'expected_value', fromJson: _doubleFromJson) double expectedValue,@JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson) double deviationPercent, String message
+ String id,@JsonKey(name: 'campaign_id') String campaignId,@JsonKey(name: 'campaign_name') String campaignName,@JsonKey(name: 'detected_at') String detectedAt,@JsonKey(unknownEnumValue: AnomalyType.unknown) AnomalyType type,@JsonKey(unknownEnumValue: AnomalySeverity.unknown) AnomalySeverity severity, String metric,@JsonKey(name: 'actual_value', fromJson: _doubleFromJson) double actualValue,@JsonKey(name: 'expected_value', fromJson: _doubleFromJson) double expectedValue,@JsonKey(name: 'deviation_percent', fromJson: _doubleFromJson) double deviationPercent, String message
 });
 
 
@@ -566,8 +566,8 @@ as String,campaignId: null == campaignId ? _self.campaignId : campaignId // igno
 as String,campaignName: null == campaignName ? _self.campaignName : campaignName // ignore: cast_nullable_to_non_nullable
 as String,detectedAt: null == detectedAt ? _self.detectedAt : detectedAt // ignore: cast_nullable_to_non_nullable
 as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String,severity: null == severity ? _self.severity : severity // ignore: cast_nullable_to_non_nullable
-as String,metric: null == metric ? _self.metric : metric // ignore: cast_nullable_to_non_nullable
+as AnomalyType,severity: null == severity ? _self.severity : severity // ignore: cast_nullable_to_non_nullable
+as AnomalySeverity,metric: null == metric ? _self.metric : metric // ignore: cast_nullable_to_non_nullable
 as String,actualValue: null == actualValue ? _self.actualValue : actualValue // ignore: cast_nullable_to_non_nullable
 as double,expectedValue: null == expectedValue ? _self.expectedValue : expectedValue // ignore: cast_nullable_to_non_nullable
 as double,deviationPercent: null == deviationPercent ? _self.deviationPercent : deviationPercent // ignore: cast_nullable_to_non_nullable

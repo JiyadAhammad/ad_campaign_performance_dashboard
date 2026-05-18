@@ -12,10 +12,10 @@ class AlertCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color typeColor = alert.type == 'spend_spike'
+    final Color typeColor = alert.type.isSpendSpike
         ? AppColors.error
         : AppColors.warning;
-    final IconData typeIcon = alert.type == 'spend_spike'
+    final IconData typeIcon = alert.type.isSpendSpike
         ? Icons.trending_up
         : Icons.trending_down;
     return AppCard(
@@ -66,7 +66,7 @@ class AlertCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(2),
                       ),
                       child: AppText(
-                        alert.type,
+                        alert.type.name,
                         variant: TextVariant.captionRegular,
                         color: typeColor,
                       ),

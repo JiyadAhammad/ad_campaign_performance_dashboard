@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/entity/campaign_forecast_entity.dart';
+import '../../../../../core/enums/enums.dart';
 
 part 'campaign_forecast_model.freezed.dart';
 part 'campaign_forecast_model.g.dart';
@@ -45,7 +46,7 @@ abstract class CampaignForecastModel with _$CampaignForecastModel {
 @freezed
 abstract class ForecastRecommendationModel with _$ForecastRecommendationModel {
   const factory ForecastRecommendationModel({
-    required String trend,
+    @JsonKey(unknownEnumValue: ForecastTrend.unknown) required ForecastTrend trend,
 
     @JsonKey(name: 'change_percent') required double changePercent,
 

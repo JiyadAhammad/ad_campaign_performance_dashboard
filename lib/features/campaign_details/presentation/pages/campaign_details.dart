@@ -29,7 +29,6 @@ class CampaignDetailScreen extends StatefulWidget {
 }
 
 class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -57,17 +56,29 @@ class _CampaignDetailScreenState extends State<CampaignDetailScreen> {
 
             const SizedBox(height: 4),
 
-            Row(
-              children: <Widget>[
-                // _AppBarTag(title: widget.campaignStatus, color: Colors.green),
+            BlocBuilder<CampaignDetailsBloc, CampaignDetailsState>(
+              builder: (BuildContext context, CampaignDetailsState state) {
+                if (state.campaignDetailsEntity != null) {
+                  final CampaignDetailEntity campaign =
+                      state.campaignDetailsEntity!;
+                  return Row(
+                    children: <Widget>[
+                      _AppBarTag(
+                        title: campaign.status.name,
+                        color: Colors.green,
+                      ),
 
-                // const SizedBox(width: 8),
+                      const SizedBox(width: 8),
 
-                // _AppBarTag(
-                //   title: widget.campaignType,
-                //   color: AppColors.primary,
-                // ),
-              ],
+                      _AppBarTag(
+                        title: campaign.objective.name,
+                        color: AppColors.primary,
+                      ),
+                    ],
+                  );
+                }
+                return const SizedBox();
+              },
             ),
           ],
         ),

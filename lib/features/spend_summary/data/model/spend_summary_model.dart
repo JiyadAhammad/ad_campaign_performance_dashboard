@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/entity/spend_summary_entity.dart';
+import '../../../../core/enums/enums.dart';
 
 part 'spend_summary_model.freezed.dart';
 part 'spend_summary_model.g.dart';
@@ -54,7 +55,7 @@ abstract class CampaignAnalyticsSummaryModel
 @freezed
 abstract class ChannelAnalyticsModel with _$ChannelAnalyticsModel {
   const factory ChannelAnalyticsModel({
-    required String channel,
+    @JsonKey(unknownEnumValue: AdChannel.Social) required AdChannel channel,
 
     @JsonKey(fromJson: intFromJson) required int spend,
 

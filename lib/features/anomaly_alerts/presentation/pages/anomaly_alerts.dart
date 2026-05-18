@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_text.dart';
 import '../../domain/entity/anomaly_detect_entity.dart';
-import '../../domain/entity/live_campaign_alert_entity.dart';
 import '../bloc/anomaly_alert_bloc.dart';
 import '../widgets/alert_card.dart';
 import '../widgets/monitoring_card.dart';
@@ -48,8 +47,8 @@ class AnomalyAlertsScreen extends StatelessWidget {
                   return Center(child: AppText('${state.errorMessage}'));
                 }
 
-                final List<LiveCampaignMetricsEntity> liveMetrics =
-                    state.liveCampaignMetricsEntity;
+                // final List<LiveCampaignMetricsEntity> liveMetrics =
+                //     state.liveCampaignMetricsEntity;
                 final List<AnomalyEntity> anomalies = state.anomalyEntity;
 
                 return ListView.separated(

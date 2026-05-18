@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import '../../../../core/enums/enums.dart';
 
 class CampaignDetailResponseEntity extends Equatable {
   const CampaignDetailResponseEntity({required this.campaign});
@@ -36,11 +37,11 @@ class CampaignDetailEntity extends Equatable {
 
   final String name;
 
-  final String status;
+  final CampaignStatus status;
 
-  final String objective;
+  final CampaignObjective objective;
 
-  final String channel;
+  final AdChannel channel;
 
   final int budget;
 

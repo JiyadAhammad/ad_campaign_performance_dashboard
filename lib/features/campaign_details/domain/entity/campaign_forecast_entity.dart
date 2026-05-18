@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import '../../../../core/enums/enums.dart';
 
 class CampaignForecastResponseEntity extends Equatable {
   const CampaignForecastResponseEntity({
@@ -100,7 +101,7 @@ class ForecastRecommendationEntity extends Equatable {
     required this.suggestedDailyBudget,
   });
 
-  final String trend;
+  final ForecastTrend trend;
 
   final double changePercent;
 
@@ -116,13 +117,7 @@ class ForecastRecommendationEntity extends Equatable {
     suggestedDailyBudget,
   ];
 
-  bool get isDownwardTrend {
-    return trend == 'downward';
-  }
 
-  bool get isUpwardTrend {
-    return trend == 'upward';
-  }
 
   double get absoluteChangePercent {
     return changePercent.abs();

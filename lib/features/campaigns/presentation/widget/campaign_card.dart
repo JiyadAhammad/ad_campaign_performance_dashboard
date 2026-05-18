@@ -17,8 +17,8 @@ class CampaignCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isActive = campaign.status == 'Active';
-    final bool isPaused = campaign.status == 'Paused';
+    final bool isActive = campaign.status.isActive;
+    final bool isPaused = campaign.status.isPaused;
 
     return GestureDetector(
       onTap: () {
@@ -80,7 +80,7 @@ class CampaignCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(2),
                         ),
                         child: AppText(
-                          campaign.objective,
+                          campaign.objective.name,
                           variant: TextVariant.captionRegular,
                           color: AppColors.primary,
                         ),
@@ -118,7 +118,7 @@ class CampaignCard extends StatelessWidget {
                       ),
 
                       AppText(
-                        campaign.status,
+                        campaign.status.name,
                         variant: TextVariant.captionMedium,
                         color: isActive
                             ? AppColors.success
@@ -242,7 +242,7 @@ class CampaignCard extends StatelessWidget {
                   child: _BottomInfo(
                     icon: Icons.public,
                     title: 'Audience',
-                    value: campaign.channel,
+                    value: campaign.channel.name,
                   ),
                 ),
               ],

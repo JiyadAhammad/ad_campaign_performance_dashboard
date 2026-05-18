@@ -73,7 +73,7 @@ class SpendByChannelCard extends StatelessWidget {
 
                         Expanded(
                           child: AppText(
-                            item.channel,
+                            item.channel.name,
                             variant: TextVariant.labelMedium,
                           ),
                         ),
