@@ -17,11 +17,12 @@ class SpendByChannelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<MaterialColor> colors = List.generate(channels.length, (
-      int index,
-    ) {
-      return Colors.primaries[Random().nextInt(10)];
-    });
+    final List<MaterialColor> colors = List<MaterialColor>.generate(
+      channels.length,
+      (int index) {
+        return Colors.primaries[Random().nextInt(10)];
+      },
+    );
     return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

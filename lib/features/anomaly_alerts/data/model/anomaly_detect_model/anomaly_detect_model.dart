@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../domain/entity/anomaly_detect_entity.dart';
 import '../../../../../core/enums/enums.dart';
+import '../../../domain/entity/anomaly_detect_entity.dart';
 
 part 'anomaly_detect_model.freezed.dart';
 part 'anomaly_detect_model.g.dart';
@@ -34,7 +34,8 @@ abstract class AnomalyModel with _$AnomalyModel {
     @JsonKey(name: 'detected_at') required String detectedAt,
 
     @JsonKey(unknownEnumValue: AnomalyType.unknown) required AnomalyType type,
-    @JsonKey(unknownEnumValue: AnomalySeverity.unknown) required AnomalySeverity severity,
+    @JsonKey(unknownEnumValue: AnomalySeverity.unknown)
+    required AnomalySeverity severity,
     required String metric,
 
     @JsonKey(name: 'actual_value', fromJson: _doubleFromJson)
