@@ -64,25 +64,33 @@ class CampaignsScreen extends StatelessWidget {
             ///
             /// LIST
             ///
+            // TODO(Jiyad): Add Pull to refresh logic
             Expanded(
-              child: BlocBuilder<CampaignBloc, CampaignState>(
-                builder: (BuildContext context, CampaignState state) {
-                  if (state.isLoading) {
-                    return const CampaignListItemShimmer();
-                  }
-                  if (state.isError) {
-                    return Center(child: AppText('${state.errorMessage}'));
-                  }
-                  final List<CampaignEntity> campaigns = state.campaigns;
-                  return ListView.builder(
-                    itemCount: campaigns.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final CampaignEntity campaign = campaigns[index];
-
-                      return CampaignCard(campaign: campaign);
-                    },
+              child: RefreshIndicator.adaptive(
+                onRefresh: () async {
+                  context.read<CampaignBloc>().add(
+                    const CampaignEvent.getCampaigns(),
                   );
                 },
+                child: BlocBuilder<CampaignBloc, CampaignState>(
+                  builder: (BuildContext context, CampaignState state) {
+                    if (state.isLoading) {
+                      return const CampaignListItemShimmer();
+                    }
+                    if (state.isError) {
+                      return Center(child: AppText('${state.errorMessage}'));
+                    }
+                    final List<CampaignEntity> campaigns = state.campaigns;
+                    return ListView.builder(
+                      itemCount: campaigns.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final CampaignEntity campaign = campaigns[index];
+
+                        return CampaignCard(campaign: campaign);
+                      },
+                    );
+                  },
+                ),
               ),
             ),
           ],
