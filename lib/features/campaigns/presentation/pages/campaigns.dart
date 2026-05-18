@@ -29,7 +29,7 @@ class CampaignsScreen extends StatelessWidget {
               height: 52,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
-                color: const Color(0xFF1A1A25),
+                color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(),
               ),
@@ -51,14 +51,49 @@ class CampaignsScreen extends StatelessWidget {
             ///
             /// FILTERS
             ///
-            const Row(
-              children: <Widget>[
-                _FilterChip(title: 'All', selected: true),
-                SizedBox(width: 10),
-                _FilterChip(title: 'Active', selected: false),
-                SizedBox(width: 10),
-                _FilterChip(title: 'Paused', selected: false),
-              ],
+            BlocBuilder<CampaignBloc, CampaignState>(
+              builder: (BuildContext context, CampaignState state) {
+                return Row(
+                  spacing: 10,
+                  children: <Widget>[
+                    _FilterChip(
+                      onTap: () {
+                        context.read<CampaignBloc>().add(
+                          const CampaignEvent.filterCampaigns(
+                            CampaignFilter.all,
+                          ),
+                        );
+                      },
+                      title: 'All',
+                      selected: state.selectedFilter == CampaignFilter.all,
+                    ),
+
+                    _FilterChip(
+                      onTap: () {
+                        context.read<CampaignBloc>().add(
+                          const CampaignEvent.filterCampaigns(
+                            CampaignFilter.active,
+                          ),
+                        );
+                      },
+                      title: 'Active',
+                      selected: state.selectedFilter == CampaignFilter.active,
+                    ),
+
+                    _FilterChip(
+                      onTap: () {
+                        context.read<CampaignBloc>().add(
+                          const CampaignEvent.filterCampaigns(
+                            CampaignFilter.paused,
+                          ),
+                        );
+                      },
+                      title: 'Paused',
+                      selected: state.selectedFilter == CampaignFilter.paused,
+                    ),
+                  ],
+                );
+              },
             ),
 
             ///
@@ -80,7 +115,8 @@ class CampaignsScreen extends StatelessWidget {
                     if (state.isError) {
                       return Center(child: AppText('${state.errorMessage}'));
                     }
-                    final List<CampaignEntity> campaigns = state.campaigns;
+                    final List<CampaignEntity> campaigns =
+                        state.filteredCampaigns;
                     return ListView.builder(
                       itemCount: campaigns.length,
                       itemBuilder: (BuildContext context, int index) {
@@ -101,23 +137,29 @@ class CampaignsScreen extends StatelessWidget {
 }
 
 class _FilterChip extends StatelessWidget {
-  const _FilterChip({required this.title, required this.selected});
+  const _FilterChip({
+    required this.title,
+    required this.selected,
+    required this.onTap,
+  });
 
   final String title;
   final bool selected;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-      decoration: BoxDecoration(
-        color: selected ? const Color(0xFF1D1D2B) : const Color(0xFF14141C),
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: AppText(
-        title,
-        variant: TextVariant.labelMedium,
-        color: selected ? Colors.white : Colors.white54,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+        decoration: BoxDecoration(
+          color: selected
+              ? Theme.of(context).colorScheme.primary
+              : Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: AppText(title, variant: TextVariant.labelMedium),
       ),
     );
   }
