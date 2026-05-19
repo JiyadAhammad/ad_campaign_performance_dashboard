@@ -3,12 +3,17 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../../core/widgets/custom_card.dart';
 import '../../../../core/widgets/custom_text.dart';
+import '../../domain/entity/campaign_forecast_entity.dart';
 
 class RecommendationCard extends StatelessWidget {
-  const RecommendationCard({super.key});
+  const RecommendationCard({super.key, required this.recommendationEntity});
+  final ForecastRecommendationEntity recommendationEntity;
 
   @override
   Widget build(BuildContext context) {
+    final List<String> messageParts = recommendationEntity.message.split('. ');
+    final String title = '${messageParts.first}.';
+    final String description = messageParts.skip(1).join('. ');
     return AppCard(
       child: IntrinsicHeight(
         child: Row(
@@ -32,26 +37,20 @@ class RecommendationCard extends StatelessWidget {
             ///
             /// TEXT
             ///
-            const Expanded(
+            Expanded(
               child: Column(
                 spacing: 2,
                 crossAxisAlignment: .start,
                 children: <Widget>[
-                  AppText(
+                  const AppText(
                     'Budget Recommendation',
                     variant: TextVariant.captionMedium,
                     color: AppColors.success,
                   ),
 
-                  AppText(
-                    'CTR is predicted to increase by 12%',
-                    variant: TextVariant.labelMedium,
-                  ),
+                  AppText(title, variant: TextVariant.labelMedium),
 
-                  AppText(
-                    'Consider increasing budget to maximize results',
-                    variant: TextVariant.captionRegular,
-                  ),
+                  AppText(description, variant: TextVariant.captionRegular),
                 ],
               ),
             ),

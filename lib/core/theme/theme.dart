@@ -34,6 +34,33 @@ class AppCustomColors extends ThemeExtension<AppCustomColors> {
   }
 }
 
+class ShimmerColors extends ThemeExtension<ShimmerColors> {
+  const ShimmerColors({required this.baseColor, required this.highlightColor});
+
+  final Color baseColor;
+  final Color highlightColor;
+
+  @override
+  ShimmerColors copyWith({Color? baseColor, Color? highlightColor}) {
+    return ShimmerColors(
+      baseColor: baseColor ?? this.baseColor,
+      highlightColor: highlightColor ?? this.highlightColor,
+    );
+  }
+
+  @override
+  ShimmerColors lerp(ThemeExtension<ShimmerColors>? other, double t) {
+    if (other is! ShimmerColors) {
+      return this;
+    }
+
+    return ShimmerColors(
+      baseColor: Color.lerp(baseColor, other.baseColor, t)!,
+      highlightColor: Color.lerp(highlightColor, other.highlightColor, t)!,
+    );
+  }
+}
+
 class AppTheme {
   // Shared Decoration Logic (DRY Principle)
   static InputBorder _border([Color color = Colors.grey]) => OutlineInputBorder(
@@ -50,6 +77,7 @@ class AppTheme {
     brightness: Brightness.dark,
     primaryColor: AppColors.primary,
     scaffoldBackgroundColor: AppColors.darkBg,
+    primaryColorLight: Colors.white,
     cardColor: AppColors.darkCard,
     colorScheme: const ColorScheme.dark(
       primary: AppColors.primary,
@@ -63,12 +91,16 @@ class AppTheme {
       backgroundColor: AppColors.appBarBg,
       surfaceTintColor: AppColors.appBarBg,
     ),
-    extensions: <ThemeExtension<AppCustomColors>>[
+    extensions: <ThemeExtension<dynamic>>[
       AppCustomColors(
         success: AppColors.success,
         warning: AppColors.warning,
         error: AppColors.error,
         muted: AppColors.blue,
+      ),
+      const ShimmerColors(
+        baseColor: Colors.white10,
+        highlightColor: Colors.white24,
       ),
     ],
     inputDecorationTheme: InputDecorationTheme(
@@ -89,16 +121,21 @@ class AppTheme {
     primaryColor: AppColors.primary,
     scaffoldBackgroundColor: AppColors.lightBg,
     cardColor: AppColors.lightCard,
+    primaryColorLight: Colors.black,
     colorScheme: const ColorScheme.light(
       primary: AppColors.primary,
       error: AppColors.error,
     ),
-    extensions: <ThemeExtension<AppCustomColors>>[
+    extensions: <ThemeExtension<dynamic>>[
       AppCustomColors(
         success: AppColors.success,
         warning: AppColors.warning,
         error: AppColors.error,
         muted: AppColors.blue,
+      ),
+      const ShimmerColors(
+        baseColor: Color(0xFFE0E0E0),
+        highlightColor: Color(0xFFF5F5F5),
       ),
     ],
     // Adapt input theme for light mode

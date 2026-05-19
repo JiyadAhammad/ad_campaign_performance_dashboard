@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/extensions/date_extension.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../../core/widgets/custom_card.dart';
 import '../../../../core/widgets/custom_text.dart';
-import '../../data/model/sample_model.dart';
+import '../../domain/entity/anomaly_detect_entity.dart';
 
 class AlertCard extends StatelessWidget {
   const AlertCard({super.key, required this.alert});
-  final AlertModel alert;
+  final AnomalyEntity alert;
 
   @override
   Widget build(BuildContext context) {
+    final Color typeColor = alert.type.isSpendSpike
+        ? AppColors.error
+        : AppColors.warning;
+    final IconData typeIcon = alert.type.isSpendSpike
+        ? Icons.trending_up
+        : Icons.trending_down;
     return AppCard(
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -30,10 +37,10 @@ class AlertCard extends StatelessWidget {
                 height: 41,
                 width: 41,
                 decoration: BoxDecoration(
-                  color: alert.accentColor.withAlpha(20),
+                  color: typeColor.withAlpha(20),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Icon(alert.icon, color: alert.accentColor, size: 30),
+                child: Icon(typeIcon, color: typeColor, size: 30),
               ),
 
               const SizedBox(width: 6),
@@ -55,17 +62,20 @@ class AlertCard extends StatelessWidget {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: alert.accentColor.withAlpha(20),
+                        color: typeColor.withAlpha(20),
                         borderRadius: BorderRadius.circular(2),
                       ),
                       child: AppText(
-                        alert.type,
+                        alert.type.name,
                         variant: TextVariant.captionRegular,
-                        color: alert.accentColor,
+                        color: typeColor,
                       ),
                     ),
 
-                    AppText(alert.title, variant: TextVariant.labelMedium),
+                    AppText(
+                      alert.campaignName,
+                      variant: TextVariant.labelMedium,
+                    ),
 
                     const AppText(
                       'Campaign',
@@ -78,14 +88,17 @@ class AlertCard extends StatelessWidget {
               ///
               /// TIME
               ///
-              AppText(alert.time, variant: TextVariant.captionRegular),
+              AppText(
+                alert.detectedAt.toTimeAgo(),
+                variant: TextVariant.captionRegular,
+              ),
             ],
           ),
 
           ///
           /// DESCRIPTION
           ///
-          AppText(alert.description, variant: TextVariant.labelMedium),
+          AppText(alert.message, variant: TextVariant.labelMedium),
 
           ///
           /// METRICS
@@ -95,17 +108,17 @@ class AlertCard extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: _MetricCard(
-                  icon: Icons.north_east,
-                  value: alert.spend,
+                  icon: Icons.trending_up,
+                  value: '${alert.actualValue}',
                   label: 'Spend',
-                  color: alert.accentColor,
+                  color: typeColor,
                 ),
               ),
 
               Expanded(
                 child: _MetricCard(
-                  icon: Icons.trending_up,
-                  value: alert.expected,
+                  icon: Icons.data_exploration,
+                  value: '${alert.expectedValue}',
                   label: 'Expected',
                   color: AppColors.primary,
                 ),
@@ -113,10 +126,12 @@ class AlertCard extends StatelessWidget {
 
               Expanded(
                 child: _MetricCard(
-                  icon: alert.isPositive ? Icons.north_east : Icons.south_east,
-                  value: alert.change,
+                  icon: alert.deviationPercent.isNegative
+                      ? Icons.north_east
+                      : Icons.south_east,
+                  value: '${alert.deviationPercent}',
                   label: 'Change',
-                  color: alert.accentColor,
+                  color: typeColor,
                 ),
               ),
             ],

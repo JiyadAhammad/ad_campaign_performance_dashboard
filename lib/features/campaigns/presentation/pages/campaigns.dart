@@ -1,58 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/colors.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_text.dart';
-import '../../data/model/sample_model.dart';
+import '../../domain/entity/campaign_entity.dart';
+import '../bloc/campaign_bloc.dart';
 import '../widget/campaign_card.dart';
+import '../widget/campaign_shimmer.dart';
 
 class CampaignsScreen extends StatelessWidget {
   const CampaignsScreen({super.key});
-
-  static final List<CampaignModel> campaigns = <CampaignModel>[
-    CampaignModel(
-      title: 'Winter Sale\nConversion',
-      category: 'Conversion',
-      status: 'Active',
-      spend: '7,800 SAR',
-      totalSpend: '10,000 SAR',
-      progress: 0.55,
-      impressions: '250K',
-      clicks: '6.2K',
-      ctr: '2.48%',
-      startDate: '02 Jan 2025',
-      audience: 'All Users, KSA',
-      icon: Icons.shopping_cart_outlined,
-    ),
-    CampaignModel(
-      title: 'Ramadan Offers\nCampaign',
-      category: 'Conversion',
-      status: 'Paused',
-      spend: '5,400 SAR',
-      totalSpend: '8,000 SAR',
-      progress: 0.47,
-      impressions: '180K',
-      clicks: '5.1K',
-      ctr: '2.93%',
-      startDate: '11 May 2025',
-      audience: 'Families, GCC',
-      icon: Icons.card_giftcard,
-    ),
-    CampaignModel(
-      title: 'Summer Collection\nAwareness Campaign',
-      category: 'Awareness',
-      status: 'Ended',
-      spend: '9,100 SAR',
-      totalSpend: '12,000 SAR',
-      progress: 0.76,
-      impressions: '420K',
-      clicks: '8.8K',
-      ctr: '3.10%',
-      startDate: '19 Jun 2025',
-      audience: 'Young Adults',
-      icon: Icons.campaign_outlined,
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +29,7 @@ class CampaignsScreen extends StatelessWidget {
               height: 52,
               padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
-                color: const Color(0xFF1A1A25),
+                color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(),
               ),
@@ -93,27 +51,82 @@ class CampaignsScreen extends StatelessWidget {
             ///
             /// FILTERS
             ///
-            const Row(
-              children: <Widget>[
-                _FilterChip(title: 'All', selected: true),
-                SizedBox(width: 10),
-                _FilterChip(title: 'Active', selected: false),
-                SizedBox(width: 10),
-                _FilterChip(title: 'Paused', selected: false),
-              ],
+            BlocBuilder<CampaignBloc, CampaignState>(
+              builder: (BuildContext context, CampaignState state) {
+                return Row(
+                  spacing: 10,
+                  children: <Widget>[
+                    _FilterChip(
+                      onTap: () {
+                        context.read<CampaignBloc>().add(
+                          const CampaignEvent.filterCampaigns(
+                            CampaignFilter.all,
+                          ),
+                        );
+                      },
+                      title: 'All',
+                      selected: state.selectedFilter == CampaignFilter.all,
+                    ),
+
+                    _FilterChip(
+                      onTap: () {
+                        context.read<CampaignBloc>().add(
+                          const CampaignEvent.filterCampaigns(
+                            CampaignFilter.active,
+                          ),
+                        );
+                      },
+                      title: 'Active',
+                      selected: state.selectedFilter == CampaignFilter.active,
+                    ),
+
+                    _FilterChip(
+                      onTap: () {
+                        context.read<CampaignBloc>().add(
+                          const CampaignEvent.filterCampaigns(
+                            CampaignFilter.paused,
+                          ),
+                        );
+                      },
+                      title: 'Paused',
+                      selected: state.selectedFilter == CampaignFilter.paused,
+                    ),
+                  ],
+                );
+              },
             ),
 
             ///
             /// LIST
             ///
+            // TODO(Jiyad): Add Pull to refresh logic
             Expanded(
-              child: ListView.builder(
-                itemCount: campaigns.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final CampaignModel campaign = campaigns[index];
-
-                  return CampaignCard(campaign: campaign);
+              child: RefreshIndicator.adaptive(
+                onRefresh: () async {
+                  context.read<CampaignBloc>().add(
+                    const CampaignEvent.getCampaigns(),
+                  );
                 },
+                child: BlocBuilder<CampaignBloc, CampaignState>(
+                  builder: (BuildContext context, CampaignState state) {
+                    if (state.isLoading) {
+                      return const CampaignListItemShimmer();
+                    }
+                    if (state.isError) {
+                      return Center(child: AppText('${state.errorMessage}'));
+                    }
+                    final List<CampaignEntity> campaigns =
+                        state.filteredCampaigns;
+                    return ListView.builder(
+                      itemCount: campaigns.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final CampaignEntity campaign = campaigns[index];
+
+                        return CampaignCard(campaign: campaign);
+                      },
+                    );
+                  },
+                ),
               ),
             ),
           ],
@@ -124,23 +137,29 @@ class CampaignsScreen extends StatelessWidget {
 }
 
 class _FilterChip extends StatelessWidget {
-  const _FilterChip({required this.title, required this.selected});
+  const _FilterChip({
+    required this.title,
+    required this.selected,
+    required this.onTap,
+  });
 
   final String title;
   final bool selected;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-      decoration: BoxDecoration(
-        color: selected ? const Color(0xFF1D1D2B) : const Color(0xFF14141C),
-        borderRadius: BorderRadius.circular(14),
-      ),
-      child: AppText(
-        title,
-        variant: TextVariant.labelMedium,
-        color: selected ? Colors.white : Colors.white54,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+        decoration: BoxDecoration(
+          color: selected
+              ? Theme.of(context).colorScheme.primary
+              : Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: AppText(title, variant: TextVariant.labelMedium),
       ),
     );
   }
